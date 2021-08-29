@@ -1,0 +1,38 @@
+@import '../../styles//scss/variables.scss';
+.footer {
+    width: 100%;
+    border-top: 1px solid #eaeaea;
+    display: flex;
+    justify-content: flex-start;
+    align-items: baseline;
+    padding:0 40px;
+  }
+
+  .footer img {
+    margin-left: 0.5rem;
+  }
+
+  .footer a {
+    display: flex;
+    align-items: baseline;
+  }
+  .logo {
+    height: 1em;
+  }
+  .feature {
+      padding:20px 20px 0px 0px;
+      p {
+          font-family: 'Inter-SemiBold';
+          font-size: 18px;
+          color:$blue-2;
+      }
+      a {
+          color: $blue-2;
+          font-size: 15px;
+          font-family:'Inter-Light';
+          cursor: pointer;
+      }
+      a:hover {
+          text-decoration: underline;
+      }
+  }

@@ -1,0 +1,34 @@
+@import '/node_modules/bootstrap/scss/bootstrap.scss';
+@import './scss/reset.scss';
+@import './scss/fonts.scss';
+@import './select.scss';
+$theme-colors: (
+  'primary': #145bea,
+  'secondary': #833bec,
+  'success': #1ce1ac,
+  'info': #ff7d50,
+  'warning': #ffbe0b,
+  'danger': #ff007f,
+  'light': #c0ccda,
+  'dark': #001738,
+);
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  height:100%;
+  background-color:#F4F6FA;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}

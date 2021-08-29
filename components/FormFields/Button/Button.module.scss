@@ -1,0 +1,43 @@
+.root {
+	height: 42px;
+	background-color: gray;
+	font-size: 14px;
+	padding: 0 8px;
+	border: none;
+	border-radius: 0;
+
+	&:focus {
+		outline: none;
+		box-shadow: 0 0 0 2pt #bfdeff;
+	}
+
+	&:disabled {
+		opacity: 0.5;
+	}
+
+	&[data-variant='contained'] {
+		&[data-color='primary'] {
+			background-color: #0078b3;
+			color: white;
+		}
+
+		&[data-color='success'] {
+			background-color: #57a635;
+			color: white;
+		}
+	}
+
+	&[data-variant='outline'] {
+		&[data-color='primary'] {
+			background-color: white;
+			color: #0078b3;
+			border: 1px solid #0078b3;
+		}
+
+		&[data-color='success'] {
+			background-color: white;
+			color: #57a635;
+			border: 1px solid #57a635;
+		}
+	}
+}
