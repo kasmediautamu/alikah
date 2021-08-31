@@ -1,0 +1,28 @@
+@import '../../styles/scss/variables.scss';
+.topCityListTitle{
+    font-family: 'Inter-Bold';
+    font-size: 20px;
+    line-height: 24px;
+    color:$blue-2;
+    padding:20px 0px 10px 10px;
+}
+.cities {
+    display:flex;
+    flex-direction:column;
+    justify-content: space-between;
+    text-transform: capitalize;
+    position:relative;
+    font-size: 18px;
+    padding:5px 0 ;
+    font-family: 'Inter-Regular';
+    padding-bottom: 15px;
+    a {
+        padding-left:15px;
+        &:hover {
+            background-color: $blue-2;
+            text-decoration: underline;
+            color:black;
+            
+        }
+    }
+}

@@ -2,6 +2,7 @@
 @import './scss/reset.scss';
 @import './scss/fonts.scss';
 @import './select.scss';
+@import './scss/sidenav.scss';
 $theme-colors: (
   'primary': #145bea,
   'secondary': #833bec,
@@ -19,6 +20,10 @@ body {
   margin: 0;
   height:100%;
   background-color:#F4F6FA;
+}
+p{
+  margin:0;
+  padding: 0;
 }
 
 a {

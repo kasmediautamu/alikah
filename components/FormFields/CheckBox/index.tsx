@@ -1,6 +1,6 @@
 import React from 'react';
 // Styles
-import s from './TextField.module.scss';
+import s from './CheckBox.module.scss';
 // Components
 import Form from 'react-bootstrap/Form';
 // Interfaces
@@ -8,7 +8,7 @@ import { FormControlProps } from 'react-bootstrap/FormControl';
 // Utils
 import classnames from 'classnames';
 
-interface ITextFieldProps {
+interface ICheckBoxProps {
 	id?: string;
 	className?: string;
 	formControlProps?: FormControlProps;
@@ -20,7 +20,7 @@ interface ITextFieldProps {
 	type?: string;
 }
 
-const TextField: React.FC<ITextFieldProps> = ({
+const CheckBox: React.FC<ICheckBoxProps> = ({
 	id = '',
 	className,
 	formControlProps,
@@ -34,17 +34,18 @@ const TextField: React.FC<ITextFieldProps> = ({
 			controlId={id}
 			data-error={Boolean(error)}
 		>
-			{label && <Form.Label className={s.label}>{label}</Form.Label>}
+			{/* {label && <Form.Label className={s.label}>{label}</Form.Label>} */}
 
-			<Form.Control
+			{/* <Form.Control
 				{...formControlProps}
-				type = {type}
+				type = 'checkbox'
 				className={classnames(s.input, formControlProps ? formControlProps.className : '')}
-			/>
+			/> */}
+             <Form.Check type="checkbox" label={label} />
 
 			{error && <Form.Text className={s.errorMessage}>{error}</Form.Text>}
 		</Form.Group>
 	);
 };
 
-export default TextField;
+export default CheckBox;

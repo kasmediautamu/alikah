@@ -1,0 +1,21 @@
+@import '../../styles/scss/variables.scss';
+.auth{
+    margin:15px 50px;
+    display:flex;
+    flex-direction:row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: $white;
+    padding:15px;
+    border-radius: 6px;
+    // drop shadow
+    box-shadow: 0px 2px 3px 0px rgba(63,92,118,0.75);
+    -webkit-box-shadow: 0px 2px 3px 0px rgba(63,92,118,0.75);
+    -moz-box-shadow: 0px 2px 3px 0px rgba(63,92,118,0.75);
+}
+.form {
+    flex-basis: 49%;
+}
+.registrationLink{
+    flex-basis: 49%;
+}

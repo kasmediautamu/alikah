@@ -1,0 +1,59 @@
+@import './variables.scss';
+.nav {
+    display:flex;
+    flex-direction: column;
+    &__main{
+        display:flex;
+        flex-direction: column;
+        &--item{
+            list-style: none;
+            cursor: pointer;
+            text-transform: capitalize;
+            position:relative;
+            font-size: 18px;
+            padding:5px 0 ;
+            &:hover{
+                text-decoration: underline;
+                background-color: $blue-2;
+                
+            }
+         p{
+             font-size:18px;
+             font-family: 'Inter-Regular';
+             line-height: 21.6px;
+             padding-left:15px;
+         }   
+        }
+        &--wrapper{
+            position: absolute;
+            top:0%;
+            left: 80%;
+            background-color: $white;
+            border-radius: 6px;
+            z-index:99999;
+            margin-left:11px;
+            min-width:200px;
+            // drop shadow
+            box-shadow: 0px 2px 3px 0px rgba(63,92,118,0.75);
+            -webkit-box-shadow: 0px 2px 3px 0px rgba(63,92,118,0.75);
+            -moz-box-shadow: 0px 2px 3px 0px rgba(63,92,118,0.75);
+            .title{
+                padding:15px 10px 15px;
+                white-space: nowrap;
+                border-bottom:dashed 1px $blue-2;
+                font-family: 'Inter-Light';
+                &:hover {
+                    text-decoration: underline;
+                    background-color: $blue-2;
+                    color:$white;
+
+                }
+            }
+            > .title:last-child{
+                border-bottom: none;
+            }
+            
+        }
+    }
+    
+}

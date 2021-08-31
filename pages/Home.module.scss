@@ -1,0 +1,42 @@
+@import '../styles/scss/variables.scss';
+.main {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    overflow-y: scroll;
+    height:100vh;
+}
+.left {
+    flex-basis:25%;
+    background-color: white;
+    border-radius: 6px;
+    height: max-content;
+}
+.right{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-basis:73%;
+}
+.givenDate {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.datePosted {
+    color:$blue-2;
+    font-family: 'Inter-Bold';
+    font-size: 20px;
+    line-height:28px;
+    padding:10px 0;
+    cursor: pointer;
+    &:hover {
+        text-decoration: underline;
+    }
+}
+.adContainer{
+    flex-basis:50%;
+    padding-right: 10px;
+    padding-bottom: 10px;
+}
