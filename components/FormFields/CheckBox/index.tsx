@@ -34,14 +34,7 @@ const CheckBox: React.FC<ICheckBoxProps> = ({
 			controlId={id}
 			data-error={Boolean(error)}
 		>
-			{/* {label && <Form.Label className={s.label}>{label}</Form.Label>} */}
-
-			{/* <Form.Control
-				{...formControlProps}
-				type = 'checkbox'
-				className={classnames(s.input, formControlProps ? formControlProps.className : '')}
-			/> */}
-             <Form.Check type="checkbox" label={label} />
+        <Form.Check type="checkbox" label={label} />
 
 			{error && <Form.Text className={s.errorMessage}>{error}</Form.Text>}
 		</Form.Group>

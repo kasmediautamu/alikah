@@ -1,3 +1,4 @@
+@import '../../../styles/scss/variables.scss';
 .root {
 	height: 42px;
 	background-color: gray;
@@ -5,7 +6,7 @@
 	padding: 0 8px;
 	border: none;
 	border-radius: 0;
-
+  font-family: 'Inter-Medium';
 	&:focus {
 		outline: none;
 		box-shadow: 0 0 0 2pt #bfdeff;

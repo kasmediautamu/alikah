@@ -19,10 +19,10 @@ const TopCityList = () => {
   return (
     <div className={s.topCityList}>
       <p className={s.topCityListTitle}>Top Cities</p>
-      <div className={s.cities}>
+      <div className={s.cities} >
         {CityList &&
           CityList.map((city) => {
-            return <Link href={city.link}>{city.title}</Link>;
+            return <Link key={city.title} href={city.link}>{city.title}</Link>;
           })}
       </div>
     </div>

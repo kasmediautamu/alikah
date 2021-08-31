@@ -9,7 +9,7 @@ const Auth = () => {
   return (
     <div className={s.auth}>
       <form className={s.form}>
-        <p className={s.title}>Log in</p>
+        <p className={s.loginTitle}>Log in</p>
         <div className={s.field}>
           <TextField label="Email/Username" />
         </div>
@@ -17,18 +17,17 @@ const Auth = () => {
           <TextField type="password" label="Password" />
         </div>
         <div className={s.field}>
-          <TextField type="password" label="Password" />
-          <CheckBox label="stay logged in" />
+          <CheckBox label="Stay logged in" />
         </div>
         <div className="registrationLinkBtn">
             <Link href='/my-account'><Button onClick={()=>{console.log('logged in')}}>Login here</Button></Link>
         </div>
       </form>
       <div className={s.registrationLink}>
-        <p className="registrationLinkTitle">First Time On Alikah</p>
-        <p className="registrationLinkTitle">
+        <p className={s.registrationLinkTitle}>First Time On Alikah</p>
+        <p className={s.registrationLinkDesc}>
           You can take advantage of Alikah features by Managing and Editing Ads
-          easily, Read and reply your mesages any time. And By access your best ads
+          easily, Reading and replying to your mesages any time. And By access your best ads
           anytime wherever you are. All these services are free at Alikah.
         </p>
         <div className="registrationLinkBtn">
