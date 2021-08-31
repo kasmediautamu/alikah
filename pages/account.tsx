@@ -1,7 +1,7 @@
-import Registration from '../components/Registration';
+import Profile from '../components/Profile';
 const UserAccount = () => {
     return (
-        <div><Registration /></div>
+        <div><Profile /></div>
     )
 }
 
