@@ -1,5 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Activity from '../Activity'
+import Active from '../Activity/Active'
+import All from '../Activity/All'
+import Closed from '../Activity/Closed'
+import Declined from '../Activity/Declined'
+import Drafts from '../Activity/Drafts'
+import Reviewing from '../Activity/Reviewing'
 import s from './ProfileDetails.module.scss'
 
 /*
@@ -7,6 +13,7 @@ import s from './ProfileDetails.module.scss'
  * each link triggers a change in view on right
  */
 const ProfileDetails = () => {
+  const [view, setView] = useState('Active')
   return (
     <div className={s.profile}>
       <div className={s.left}>
@@ -54,7 +61,13 @@ const ProfileDetails = () => {
         </div>
       </div>
       <div className={s.right}>
-        <Activity />
+        <Activity onSetView={setView} activeView={view} />
+        {view === 'Active' && <Active />}
+        {view === 'Reviewing' && <Reviewing />}
+        {view === 'Declined' && <Declined />}
+        {view === 'Drafts' && <Drafts />}
+        {view === 'Closed' && <Closed />}
+        {view === 'All' && <All />}
       </div>
     </div>
   )
