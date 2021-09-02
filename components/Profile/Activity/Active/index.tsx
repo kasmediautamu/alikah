@@ -6,7 +6,11 @@ import s from './Active.module.scss'
  */
 const Active = () => {
   return (
-    <div>hi from active</div>
+    <div className={s.activeAds}>
+       <img src="./illustrations/alikah-ads-no-ads-illustration.svg" alt="active ads" />
+       <p>There are no adverts yet</p>
+       <p>Create new one now</p>
+    </div>
   )
 }
 

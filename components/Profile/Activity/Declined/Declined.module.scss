@@ -1,0 +1,16 @@
+@import '../../../../styles/scss/variables.scss';
+
+.declinedAds{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  p{
+    font-family: 'Inter-Light';
+    font-size: 18px;
+    line-height: 28px;
+    color:$blue-2;
+    text-align: center;
+    max-width: 70%;
+  }
+}

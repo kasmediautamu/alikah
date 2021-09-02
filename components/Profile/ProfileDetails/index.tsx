@@ -6,6 +6,8 @@ import Closed from '../Activity/Closed'
 import Declined from '../Activity/Declined'
 import Drafts from '../Activity/Drafts'
 import Reviewing from '../Activity/Reviewing'
+import Feedback from './Feedback'
+import Performance from './Performance'
 import s from './ProfileDetails.module.scss'
 
 /*
@@ -73,8 +75,8 @@ const ProfileDetails = () => {
             {view === 'All' && <All />}
           </>
         )}
-        {tab === 'Feedback' && <>Hi from feedback</>}
-        {tab === 'Performance' && <>Hi from Performance</>}
+        {tab === 'Feedback' && <><Feedback /></>}
+        {tab === 'Performance' && <Performance />}
         {tab === 'Premium' && <>Hi from Premium</>}
         {tab === 'Followers' && <>Hi from Followers</>}
         {tab === 'Faq' && <>Hi from Faq</>}

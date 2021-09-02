@@ -6,7 +6,11 @@ import s from './Reviewing.module.scss'
  */
 const Reviewing = () => {
   return (
-    <div>hi from reviewing</div>
+    <div className={s.reviewAds}>
+    <img src="./illustrations/alikah-ads-under-review-illustration.svg" alt="under review ads" />
+    <p>Alikah checks each advert to make sure everything is correct.</p>
+    <p>Your new ads will be displayed here while we check them.</p>
+ </div>
   )
 }
 
