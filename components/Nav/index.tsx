@@ -9,7 +9,7 @@ const Nav = () => {
     return (
       <div className={s.btnWrapper}>
         <img src="/icons/add-post.svg" alt="Alikah add post icon" />
-        <Link href="/post-ad">Post free Ad</Link>
+        <Link href="/create-free-ad">Post free Ad</Link>
       </div>
     );
   }
@@ -42,7 +42,7 @@ const Nav = () => {
             setCity(value);
           }}
         /></li>
-        
+
       </ul>
       <ul className={s.right}>
         <li className={s.navItem}>

@@ -52,10 +52,10 @@ const ProfileDetails = () => {
           <img src="./icons/alikah-ads-premium-services-icon.svg" alt="alikah Premium services" />
           <p data-testid="premium">Premium Services</p>
         </div>
-        <div className={s.profileFeatureInd} onClick={() => setTab('Followers')}>
+        <div className={s.profileFeatureInd} onClick={() => setTab('Dating')}>
           <img src="./icons/alikah-ads-followers-icon.svg" alt="alikah Followers" />
           <p data-testid="followers">
-            Followers <span>{'1'}</span>
+            Dating/Love <span>{'1'}</span>
           </p>
         </div>
         <div className={s.profileFeatureInd} onClick={() => setTab('Faq')}>
@@ -78,7 +78,7 @@ const ProfileDetails = () => {
         {tab === 'Feedback' && <><Feedback /></>}
         {tab === 'Performance' && <Performance />}
         {tab === 'Premium' && <>Hi from Premium</>}
-        {tab === 'Followers' && <>Hi from Followers</>}
+        {tab === 'Dating' && <>Hi from Dating</>}
         {tab === 'Faq' && <>Hi from Faq</>}
       </div>
     </div>
