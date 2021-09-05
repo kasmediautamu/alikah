@@ -1,0 +1,21 @@
+@import '../../../styles/scss/variables.scss';
+.adminContent {
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  padding:0 10px;
+}
+.left,.right {
+  background-color: $white;
+  padding:15px;
+  border-radius: 6px;
+  flex-basis: 20%;
+  // drop shadow
+  box-shadow: 0px 2px 3px 0px rgba(63,92,118,0.75);
+  -webkit-box-shadow: 0px 2px 3px 0px rgba(63,92,118,0.75);
+  -moz-box-shadow: 0px 2px 3px 0px rgba(63,92,118,0.75);
+}
+.right {
+flex-basis: 79%;
+}
