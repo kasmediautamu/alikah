@@ -15,8 +15,8 @@ import s from './ProfileDetails.module.scss'
  * each link triggers a change in view on right
  */
 const ProfileDetails = () => {
-  const [view, setView] = useState('Active')
-  const [tab, setTab] = useState('MyAdverts')
+  const [view, setView] = useState<string>('Active')
+  const [tab, setTab] = useState<string>('MyAdverts')
   return (
     <div className={s.profile}>
       <div className={s.left}>
