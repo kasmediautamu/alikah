@@ -1,0 +1,47 @@
+@import '../../../styles/scss/variables.scss';
+.adWrapper {
+border-radius: 6px;
+background-color: $white;
+cursor: pointer;
+}
+.ad {
+    display:flex;
+    flex-direction:column;
+
+}
+.adImage {
+    img{
+        width:224px;
+        height:200px;
+        object-fit: fill;
+    }
+}
+.adDetails {
+  padding:8px;
+}
+.adDescription{
+    font-family: 'Inter-Regular';
+    font-size: 15px;
+    color:$blue-2;
+    // padding:10px 0px;
+}
+.adTitle{
+    font-family: 'Inter-Medium';
+    font-size: 16px;
+    line-height: 22px;
+    color:$blue-2;
+}
+.adBtns {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width:100%;
+    p{
+        color: $blue-5;
+        font-family: 'Inter-SemiBold';
+        font-size: 13px;
+        padding:5px;
+        cursor: pointer;
+    }
+
+}

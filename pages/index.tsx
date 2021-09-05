@@ -1,9 +1,10 @@
 import Head from "next/head";
 import Link from 'next/link'
 import clientPromise from "../lib/mongodb";
-import Ad from "../components/Ad";
-import CategoryList from "../components/CategoryList";
-import TopCityList from "../components/TopCityList";
+import Ad from "../components/client/Ad";
+import CategoryList from "../components/client/CategoryList";
+import TopCityList from "../components/client/TopCityList";
+import ClientLayout from '../components/client/Layout'
 import s from "./Home.module.scss";
 export default function Home({ isConnected }) {
   return (
@@ -18,7 +19,7 @@ export default function Home({ isConnected }) {
           <TopCityList />
         </div>
         <div className={s.right}>
-          <Link href='/'><p className={s.datePosted}>Wednesday, 23 August 2021</p></Link>
+          <Link href='/'><p className={s.datePosted}>Trending Ads</p></Link>
           <div className={s.givenDate}>
             <div className={s.adContainer}>
               <Ad />
@@ -33,7 +34,6 @@ export default function Home({ isConnected }) {
               <Ad />
             </div>
           </div>
-          <Link href='/'><p className={s.datePosted}>Tuesday, 22 August 2021</p></Link>
           <div className={s.givenDate}>
             <div className={s.adContainer}>
               <Ad />
@@ -48,7 +48,6 @@ export default function Home({ isConnected }) {
               <Ad />
             </div>
           </div>
-          <Link href='/'><p className={s.datePosted}>Monday, 21 August 2021</p></Link>
           <div className={s.givenDate}>
             <div className={s.adContainer}>
               <Ad />
@@ -67,6 +66,15 @@ export default function Home({ isConnected }) {
       </main>
     </div>
   );
+}
+
+// Layout
+Home.getLayout = (page) => {
+  return(
+      <ClientLayout>
+          { page }
+      </ClientLayout>
+  )
 }
 
 export async function getServerSideProps(context) {

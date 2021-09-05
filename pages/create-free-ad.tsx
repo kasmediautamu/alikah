@@ -1,4 +1,5 @@
-import CreateAd from '../components/CreateAd'
+import ClientLayout from '../components/client/Layout'
+import CreateAd from '../components/client/CreateAd'
 const PostAd = () => {
 
     return (
@@ -7,3 +8,12 @@ const PostAd = () => {
 }
 
 export default PostAd
+
+// Layout
+PostAd.getLayout = (page) => {
+  return(
+      <ClientLayout>
+          { page }
+      </ClientLayout>
+  )
+}

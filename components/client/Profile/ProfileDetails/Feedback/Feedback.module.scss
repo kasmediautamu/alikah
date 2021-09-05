@@ -1,0 +1,52 @@
+@import '../../../../../styles//scss/variables.scss';
+
+.feedback {
+
+}
+.feedbackHeader{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid $brown-1;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+.titleFeedBack{
+  font-family: 'Inter-SemiBold';
+  color: $blue-2;
+  font-size: 20px;
+  line-height: 25px;
+}
+.feebbackTabs{
+  display:flex;
+  flex-direction: row;
+  p {
+    font-family: 'Inter-Light';
+    color: $blue-2;
+    font-size: 15px;
+    line-height: 22.4px;
+    cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  p:first-child{
+    margin-right:8px;
+  }
+}
+
+.feedbackContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  p{
+    font-family: "Inter-Light";
+    font-size: 18px;
+    line-height: 28px;
+    color: $blue-2;
+    text-align: center;
+    max-width: 70%;
+  }
+}

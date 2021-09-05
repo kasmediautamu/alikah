@@ -10,18 +10,18 @@
             cursor: pointer;
             text-transform: capitalize;
             position:relative;
-            font-size: 18px;
+            font-size: 15px;
             padding:5px 0 ;
+            line-height: 21px;
             &:hover{
                 text-decoration: underline;
-                background-color: $blue-2;
-
             }
          p{
-             font-size:18px;
-             font-family: 'Inter-Regular';
-             line-height: 21.6px;
+             font-size:15px;
+             font-family: 'Inter-Light';
+             line-height: 21px;
              padding-left:15px;
+             color:$blue-2;
          }
         }
         &--wrapper{
@@ -44,9 +44,6 @@
                 font-family: 'Inter-Light';
                 &:hover {
                     text-decoration: underline;
-                    background-color: $blue-2;
-                    color:$white;
-
                 }
             }
             > .title:last-child{

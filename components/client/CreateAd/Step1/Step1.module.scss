@@ -1,0 +1,42 @@
+@import '../../../../styles//scss/variables.scss';
+.step1form {
+  display: flex;
+  flex-direction: column;
+}
+.catLoc {
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.adCategory, .adLocation {
+  flex-basis: 48%;
+  padding:20px 0;
+}
+
+.adImages {
+  margin:auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  p{
+    font-family: 'Inter-Light';
+    font-size: 15px;
+    line-height: 20px;
+    color:$blue-2;
+    text-align: center;
+    width:60%;
+    padding:0 0 15px 0;
+  }
+  p:first-child {
+    font-family: 'Inter-SemiBold';
+    font-size: 20px;
+    line-height: 25px;
+  }
+  input[type="file"] {
+    font-family: 'Inter-Light';
+    color:$brown-1;
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+}

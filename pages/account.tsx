@@ -1,4 +1,5 @@
-import Profile from '../components/Profile';
+import ClientLayout from '../components/client/Layout'
+import Profile from '../components/client/Profile';
 const UserAccount = () => {
     return (
         <div><Profile /></div>
@@ -6,3 +7,11 @@ const UserAccount = () => {
 }
 
 export default UserAccount
+// Layout
+UserAccount.getLayout = (page) => {
+  return(
+      <ClientLayout>
+          { page }
+      </ClientLayout>
+  )
+}

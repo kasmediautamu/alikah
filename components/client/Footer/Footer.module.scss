@@ -1,0 +1,47 @@
+@import '../../../styles//scss/variables.scss';
+.footer {
+    width: 100%;
+    border-top: 1px solid #eaeaea;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    padding:0 40px 40px 40px;
+
+  }
+
+  .footer img {
+    margin-left: 0.5rem;
+  }
+
+  .footer a {
+    display: flex;
+    align-items: baseline;
+    padding-bottom: 10px;
+    white-space: nowrap;
+  }
+  .logo {
+    height: 1em;
+  }
+  .feature {
+      padding:20px 50px 0px 0px;
+      p {
+          font-family: 'Inter-SemiBold';
+          font-size: 18px;
+          color:$blue-2;
+          padding-bottom: 15px;
+      }
+      a {
+          color: $blue-2;
+          font-size: 15px;
+          font-family:'Inter-Light';
+          cursor: pointer;
+      }
+      a:hover {
+          text-decoration: underline;
+      }
+  }
+  .featuredDescription {
+    color: $blue-2;
+    font-size: 15px;
+    font-family:'Inter-Light';
+  }

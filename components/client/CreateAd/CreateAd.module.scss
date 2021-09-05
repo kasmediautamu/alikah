@@ -1,0 +1,50 @@
+@import '../../../styles//scss/variables.scss';
+.newAd {
+  margin:20px 200px;
+  background-color: $white;
+  padding:30px;
+  border-radius: 6px;
+  // drop shadow
+  box-shadow: 0px 2px 3px 0px rgba(63,92,118,0.75);
+  -webkit-box-shadow: 0px 2px 3px 0px rgba(63,92,118,0.75);
+  -moz-box-shadow: 0px 2px 3px 0px rgba(63,92,118,0.75);
+}
+.newAdHeader {
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 100%;
+  p{
+    color:$blue-2;
+    font-family: 'Inter-Light';
+    font-size: 15px;
+    line-height: 20px;
+  }
+  p:first-child{
+    color:$blue-2;
+    font-family: 'Inter-Bold';
+    font-size: 20px;
+    line-height: 25px;
+  }
+  p:last-child {
+    cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+.tabs {
+  display:flex;
+  flex-direction: row;
+  text-align: center;
+  p{
+    color:$blue-2;
+    font-family: 'Inter-Medium';
+    font-size: 18px;
+    line-height: 25px;
+    flex-basis: 50%;
+    cursor: pointer;
+  }
+
+}

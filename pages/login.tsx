@@ -1,4 +1,5 @@
-import Auth from '../components/Login'
+import ClientLayout from '../components/client/Layout'
+import Auth from '../components/client/Login'
 const Login = () => {
     return (
         <div><Auth /></div>
@@ -6,3 +7,11 @@ const Login = () => {
 }
 
 export default Login
+
+Login.getLayout = (page) => {
+  return(
+      <ClientLayout>
+          { page }
+      </ClientLayout>
+  )
+}
