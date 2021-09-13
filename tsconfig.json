@@ -24,7 +24,7 @@
     "**/*.tsx",
     "pages/**/*",
     "src/**/*"
-  ],
+, "utils/auth.js"  ],
   "exclude": [
     "node_modules"
   ]

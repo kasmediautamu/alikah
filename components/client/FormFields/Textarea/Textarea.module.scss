@@ -1,0 +1,14 @@
+@import '../../../../styles/scss/variables.scss';
+.Label {
+  padding:15px 0;
+  font-family: 'Inter-Regular';
+  color: $brown-1;
+  font-size: 15px;
+  line-height: 20x;
+}
+  .errorMessage {
+		font-size: 12px;
+		color: rgb(255, 67, 67);
+    font-family: 'Inter-ExtraLight';
+	}
+

@@ -13,11 +13,13 @@ interface ITextFieldProps {
 	className?: string;
 	formControlProps?: FormControlProps;
 	label?: string;
+  fieldname?: string
 	/**
 	 * A message error
 	 */
 	error?: string;
 	type?: string;
+  changefunction:any
 }
 
 const TextField: React.FC<ITextFieldProps> = ({
@@ -26,7 +28,9 @@ const TextField: React.FC<ITextFieldProps> = ({
 	formControlProps,
 	label,
 	error,
-	type
+	type,
+  fieldname,
+  changefunction
 }) => {
 	return (
 		<Form.Group
@@ -40,6 +44,8 @@ const TextField: React.FC<ITextFieldProps> = ({
 				{...formControlProps}
 				type = {type}
 				className={classnames(s.input, formControlProps ? formControlProps.className : '')}
+        name = {fieldname}
+        onChange ={changefunction}
 			/>
 
 			{error && <Form.Text className={s.errorMessage}>{error}</Form.Text>}

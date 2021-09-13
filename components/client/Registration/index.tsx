@@ -10,7 +10,9 @@ const Registration = () => {
             <p className={s.description}>Enter your Email Address below</p>
         </div>
         <form action="" className={s.formRegistration}>
-                <TextField type='text' label='Email'/>
+                <TextField type='text' label='User name'  changefunction={()=>console.log('username')}/>
+                <TextField type='text' label='Email' changefunction={()=>console.log('email')}/>
+                <TextField type='password' label='Password' changefunction={()=>console.log('password')}/>
                 <div className={s.submitBtn}>
                 <Button>Register Here</Button>
                 </div>

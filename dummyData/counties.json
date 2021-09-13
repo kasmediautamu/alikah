@@ -1,0 +1,182 @@
+[
+  {
+    "id": 1,
+    "country_name": "South Africa",
+    "Provinces": {
+      "Gauteng": [
+        "Alberton",
+        "Alexandra",
+        "Benoni",
+        "Boksburg",
+        "Bronkhorstspruit",
+        "Brakpan",
+        "Carletonville",
+        "Germiston",
+        "Fochville",
+        "Johannesburg",
+        "Mamelodi",
+        "Midrand",
+        "Meyerton",
+        "Heidelberg",
+        "Kempton Park",
+        "Krugersdorp",
+        "Pretoria",
+        "Randburg",
+        "Randfontein",
+        "Roodepoort",
+        "Westonaria Local Municipality",
+        "Sandton",
+        "Centurion",
+        "Soweto",
+        "Springs",
+        "Vanderbijlpark",
+        "Vereeniging"
+      ],
+      "KwaZulu-Natal": [
+        "Durban",
+        "Empangeni",
+        "Ladysmith",
+        "Kokstad",
+        "Newcastle",
+        "Pietermaritzburg",
+        "Pinetown",
+        "Port Shepstone",
+        "Richards Bay",
+        "Ulundi",
+        "Umlazi"
+      ],
+      "Limpopo": [
+        "Giyani",
+        "Lebowakgomo",
+        "Musina",
+        "Mokopane",
+        "Phalaborwa",
+        "Polokwane",
+        "Lephalale",
+        "Seshego",
+        "Sibasa",
+        "Thabazimbi",
+        "Thohoyandou"
+      ],
+      "Mpumalanga": [
+        "Barberto",
+        "Bethal",
+        "Delmas",
+        "Piet Retief",
+        "Middelburg",
+        "Emalahleni",
+        "Lydenburg",
+        "Nelspruit",
+        "Secunda",
+        "Standerton",
+        "KwaMhlanga",
+        "Volksrust"
+      ],
+      "North West": [
+        "Klerksdorp",
+        "Mahikeng",
+        "Mmabatho",
+        "Potchefstroom",
+        "Rustenburg"
+      ],
+      "Northern Cape": [
+        "Kimberley",
+        "Kuruman",
+        "Hartswater",
+        "Port Nolloth",
+        "Upington",
+        "Springbok"
+      ],
+      "Western Cape": [
+        "Bellville",
+        "Cape Town",
+        "Constantia",
+        "George",
+        "Hopefield",
+        "Oudtshoorn",
+        "Paarl",
+        "Simon’s Town",
+        "Stellenbosch",
+        "Swellendam",
+        "Worcester"
+      ],
+      "Eastern Cape": [
+        "Alice",
+        "Butterworth",
+        "East London",
+        "Graaff-Reinet",
+        "Grahamstown",
+        "King William’s Town",
+        "Mthatha",
+        "Port Elizabeth",
+        "Queenstown",
+        "Uitenhage",
+        "Zwelitsha"
+      ],
+      "Free State": [
+        "Bethlehem",
+        "Bloemfontein",
+        "Jagersfontein",
+        "Kroonstad",
+        "Odendaalsrus",
+        "Parys",
+        "Phuthaditjhaba",
+        "Sasolburg",
+        "Virginia",
+        "Welkom"
+      ]
+    }
+  },
+  {
+    "id": 2,
+    "country_name": "Swaziland",
+    "towns": [
+      "Manzini",
+      "Mbabane"
+    ]
+  },
+  {
+    "id": 3,
+    "country_name": "Namibia",
+    "towns": [
+      "Windhoek",
+      "Swakopmund",
+      "Walvis Bay"
+    ]
+  },
+  {
+    "id": 4,
+    "country_name": "Zambia",
+    "towns": [
+      "Lusaka",
+      "Ndola",
+      "Livingstone",
+      "Kitwe"
+    ]
+  },
+  {
+    "id": 5,
+    "country_name": "Zimbabwe",
+    "towns": [
+      "Harare",
+      "Bulawayo",
+      "Mutare"
+    ]
+  },
+  {
+    "id": 6,
+    "country_name": "Malawi",
+    "towns": [
+      "Lilongwe",
+      "Blantyre"
+    ]
+  },
+  {
+    "id": 7,
+    "country_name": "Botswana",
+    "towns": [
+      "Gaborone",
+      "Francistown"
+    ]
+  }
+]
