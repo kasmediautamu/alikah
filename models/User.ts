@@ -14,27 +14,23 @@ const userSchema = new mongoose.Schema (
       max: 50,
       unique: true,
     },
-    phoneNumber: {
-      type:String,
-      max:25,
-      required: false
-    },
     password: {
       type: String,
       required: true,
       min: 6,
     },
+    phoneNumber: {
+      type:String,
+      max:25,
+      required: false
+    },
+
     profilePicture: {
       type: String,
-      default: "",
     },
     isAdmin: {
       type: Boolean,
       default: false,
-    },
-    description: {
-      type: String,
-      max: 50,
     },
     city: {
       type: String,

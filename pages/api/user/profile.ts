@@ -1,5 +1,5 @@
 import nc from 'next-connect'
-import bycrypt from 'bcryptjs'
+import bcrypt from 'bcryptjs'
 import User from '../../../models/User'
 import db from '../../../lib/mongodb'
 import { isAuth,signToken } from '../../../utils/auth'
@@ -12,7 +12,7 @@ handler.put(async(req:NextApiRequest,res:NextApiResponse)=>{
   await db.dbConnect()
   const user = await User.findById(req.body.id)
     if(user.password){
-      user.password = req.body.password ? bycrypt.hashSync(req.body.password)
+      user.password = req.body.password ? bcrypt.hashSync(req.body.password)
       : user.password;
     }
     await user.save()

@@ -4,17 +4,17 @@ import s from "./TopCityList.module.scss";
 
 const TopCityList = () => {
   const CityList = [
-    { title: "Alice", link: "/" },
-    { title: "Butterworth", link: "/" },
-    { title: "East London", link: "/" },
-    { title: "Graaff-Reinet", link: "/" },
-    { title: "Grahamstown", link: "/" },
-    { title: "King William’s Town", link: "/" },
-    { title: "Mthatha", link: "/" },
-    { title: "Port Elizabeth", link: "/" },
-    { title: "Queenstown", link: "/" },
-    { title: "Zwelitsha", link: "/" },
-    { title: "Free State", link: "/" },
+    { title: "Alice", link: "/category" },
+    { title: "Butterworth", link: "/category" },
+    { title: "East London", link: "/category" },
+    { title: "Graaff-Reinet", link: "/category" },
+    { title: "Grahamstown", link: "/category" },
+    { title: "King William’s Town", link: "/category" },
+    { title: "Mthatha", link: "/category" },
+    { title: "Port Elizabeth", link: "/category" },
+    { title: "Queenstown", link: "/category" },
+    { title: "Zwelitsha", link: "/category" },
+    { title: "Free State", link: "/category" },
   ];
   return (
     <div className={s.topCityList}>

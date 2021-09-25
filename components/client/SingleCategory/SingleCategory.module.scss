@@ -1,0 +1,42 @@
+@import '../../../styles/scss/variables.scss';
+.singlecatPage {
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top:320px;
+}
+.left {
+  flex-basis: 20%;
+}
+.right {
+  flex-basis: 60%;
+}
+.adspace {
+  flex-basis:15%;
+}
+.viewmore {
+  text-align: center;
+  cursor: pointer;
+  color:$blue-2;
+  font-family: "inter-Medium";
+  font-size: 12px;
+  line-height: 15px;
+  margin: 20px 0;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+.topAds,.title {
+  color:$blue-2;
+  font-family: 'Inter-Medium';
+  font-size: 18px;
+  line-height: 24px;
+  padding: 10px 0;
+}
+.title{
+  padding-left:120px;
+  padding-bottom: 15px;
+}
+.sliderWrapper {
+  // position:relative;
+}

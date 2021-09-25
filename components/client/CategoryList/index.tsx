@@ -5,8 +5,8 @@ export const NavItems = [
     {
         name: 'Education',
         links: [
-            { title: 'University', to: '#' },
-            { title: 'High School', to: '#' },
+            { title: 'University', to: '/category' },
+            { title: 'High School', to: '/category' },
             { title: 'Techinical', to: '#' },
             { title: 'Nursery School', to: '#' },
         ],
@@ -23,7 +23,7 @@ export const NavItems = [
             { title: 'Couples Interested In Singles', to: '#' },
             { title: 'Singles Interested In Couples', to: '#' },
             { title: 'Casual Encounters', to: '#' },
-            
+
         ],
         open: false,
       },
@@ -37,7 +37,7 @@ export const NavItems = [
             { title: 'Baby Showers', to: '#' },
             { title: 'Graduation', to: '#' },
             { title: 'Funerals', to: '#' },
-            
+
         ],
         open: false,
       },

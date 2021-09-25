@@ -7,7 +7,6 @@ const ClientLayout = ({ children }) => {
 return (
     <div className={s.LayoutWrapper}>
         <Nav />
-        <Banner />
         <Category />
         <div>
             {children}

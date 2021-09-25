@@ -5,14 +5,14 @@
     align-items: center;
     justify-content: center;
     margin:15px 1px;
-    background-color: $blue-2;
+    background-color: $white;
     padding:10px 5px;
     flex-basis: 10%;
     cursor: pointer;
     p {
-        font-family: 'Inter-Light';
-        font-size: 18px;
-        color: $white;
+        font-family: 'Inter-Medium';
+        font-size: 14px;
+        color: $blue-2;
     }
     &:hover {
         background-color: $blue-5;

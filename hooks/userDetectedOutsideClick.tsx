@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-
 /**
  * Hook for handling closing when clicking outside of an element
  * @param {React.node} el

@@ -1,11 +1,11 @@
 import '../styles/globals.scss'
 import Layout from '../components/client/Layout'
 import { AppProps } from 'next/app'
-import { Children, FC, ReactElement, ReactNode } from 'react'
+import React, { Children, FC, ReactElement, ReactNode } from 'react'
 import { NextPage } from 'next'
 import { Provider } from 'react-redux'
 import { useStore } from '../redux/store'
-
+import { SnackbarProvider } from 'notistack'
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode
 }
@@ -20,9 +20,11 @@ const MyApp = ({ Component, pageProps }: AppPropsWithLayout) => {
   const getLayout = Component.getLayout ?? ((page) => page)
 
   return getLayout(
-  <Provider store={store}>
-    <Component {...pageProps} />
-  </Provider>
+    <SnackbarProvider anchorOrigin={{ vertical: 'top', horizontal: 'center' }}>
+      <Provider store={store}>
+        <Component {...pageProps} />
+      </Provider>
+    </SnackbarProvider>
   )
 }
 

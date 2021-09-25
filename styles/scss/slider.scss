@@ -1,0 +1,38 @@
+@import '../scss/variables.scss';
+.slide-container {
+  display:flex;
+  align-items: center;
+  max-width: 100%;
+  //  margin:0 10px;
+   overflow-y: auto;
+  position: absolute;
+  top:0%;
+  bottom: 0%;
+  right:10px;
+  left:10px;
+}
+  .single-item-container {
+      padding:0px;
+      cursor:pointer;
+      min-width:230px;
+      display:flex;
+      flex-direction:column;
+      background-color: $white;
+      border-radius: 6px;
+      margin: 5px;
+    // drop shadow
+      box-shadow: 0px 2px 3px 0px rgba(63,92,118,0.75);
+      -webkit-box-shadow: 0px 2px 3px 0px rgba(63,92,118,0.75);
+      -moz-box-shadow: 0px 2px 3px 0px rgba(63,92,118,0.75);
+
+  }
+  .items-container {
+      display:flex;
+      overflow-y: hidden;
+  }
+  .items-container::-webkit-scrollbar {
+      display:none;
+  }
+  .icon-cursor {
+      cursor:pointer;
+  }

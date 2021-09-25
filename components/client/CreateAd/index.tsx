@@ -8,11 +8,11 @@ const CreateAd = () => {
   return (
     <div className={s.newAd}>
       <div className={s.newAdHeader}>
-        <p>Post Ad</p>
+        <p>Create Your Ad</p>
         <p>Reset</p>
       </div>
       <div className={s.tabs}>
-        <p onClick={() => setTab('Step 1')}>Step 1: About Ad</p>
+        <p onClick={() => setTab('Step 1')}>Step 1</p>
       </div>
       <div className="content">
         {tab === 'Step 1' && <><Step1Form /></>}

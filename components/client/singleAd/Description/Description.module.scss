@@ -1,0 +1,26 @@
+@import '../../../../styles//scss/variables.scss';
+.adDescription {
+  background-color: $white;
+  padding:10px;
+  margin:10px 0px;
+  margin: 5px 0;
+  border-radius: 6px;
+    // drop shadow
+  box-shadow: 0px 2px 3px 0px rgba(63,92,118,0.75);
+  -webkit-box-shadow: 0px 2px 3px 0px rgba(63,92,118,0.75);
+  -moz-box-shadow: 0px 2px 3px 0px rgba(63,92,118,0.75);
+}
+.title {
+color:$blue-2;
+font-family: 'Inter-Medium';
+font-size: 18px;
+line-height: 24px;
+padding-bottom: 20px;
+}
+.details {
+color:$blue-2;
+font-family: 'Inter-Light';
+font-size: 15px;
+line-height: 24px;
+padding-bottom: 20px;
+}

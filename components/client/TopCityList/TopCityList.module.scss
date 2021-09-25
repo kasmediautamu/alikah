@@ -1,4 +1,12 @@
 @import '../../../styles/scss/variables.scss';
+.topCityList{
+  margin-top:10px;
+  border-radius: 6px;
+    // drop shadow
+      box-shadow: 0px 2px 3px 0px rgba(63,92,118,0.75);
+      -webkit-box-shadow: 0px 2px 3px 0px rgba(63,92,118,0.75);
+      -moz-box-shadow: 0px 2px 3px 0px rgba(63,92,118,0.75);
+}
 .topCityListTitle{
     font-family: 'Inter-Medium';
     font-size: 18px;

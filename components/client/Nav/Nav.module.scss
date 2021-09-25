@@ -4,11 +4,15 @@
  flex-direction: row;
  align-items: center;
  justify-content: space-between;
- padding: 20px 0 20px 0px;
+ background-color: $blue-2;
+ padding-top: 10px;
 }
 .logo {
     font-size:40px;
     font-family: 'Inter-Black';
+}
+.left {
+  min-width:60%;
 }
 .left, .right {
     display:flex;
@@ -17,8 +21,7 @@
 }
 .navItem {
     padding-right:10px;
-    color: $blue-2;
-    font-weight: bold;
+    color: $white;
     font-family: 'Inter-Light';
 
 }
@@ -28,10 +31,8 @@
 }
 .addPostBtn {
     background-color: $blue-4;
-    border-radius: 6px;
-    padding:10px 15px;
-    margin:0 15px 0 5px;
-
+    padding:5px 10px;
+    margin-right:5px;
     a {
         color:$white;
         p{

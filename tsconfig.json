@@ -4,7 +4,8 @@
     "lib": [
       "dom",
       "dom.iterable",
-      "esnext"
+      "esnext",
+      "es2018", // add `dom` to the array
     ],
     "allowJs": true,
     "skipLibCheck": true,
@@ -24,7 +25,7 @@
     "**/*.tsx",
     "pages/**/*",
     "src/**/*"
-, "utils/auth.js"  ],
+, "utils/auth.js", "components/client/CreateAd/Step1/index.js", "components/client/Carousel/BannerExample/index.jsx"  ],
   "exclude": [
     "node_modules"
   ]

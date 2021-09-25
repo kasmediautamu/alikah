@@ -34,11 +34,6 @@ const Banner = () => {
         }}
       />
       </div>
-      <div className={s.actionBtn}>
-      <Button>Find Item</Button>
-      </div>
-
-      {/* <Button variant="outline">More actions...</Button> */}
     </div>
   );
 };

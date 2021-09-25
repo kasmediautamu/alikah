@@ -1,0 +1,27 @@
+@import '../../../../styles/scss/variables.scss';
+.imageSliderWrapper {
+
+}
+.head {
+  background-color: $white;
+  padding:15px;
+}
+.title {
+  color:$blue-2;
+  font-size:18px ;
+  font-family: 'Inter-Medium';
+  line-height: 24px;
+}
+.price {
+  color:$blue-2;
+  font-size:18px ;
+  font-family: 'Inter-SemiBold';
+  line-height: 24px;
+}
+.imageWrapper {
+img{
+        width:700px;
+        height:500px;
+        object-fit: fill;
+}
+}

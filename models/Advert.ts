@@ -2,17 +2,17 @@ import mongoose from 'mongoose'
 
 const advertSchema = new mongoose.Schema(
   {
-    userId: {
-      type: String,
-      required: true,
-      unique: true
-    },
+
     title: {
       type: String,
       require: true,
       min: 3,
       max: 20,
       unique: false,
+    },
+    userId: {
+      type: String,
+      required: true,
     },
     category: {
       type: String,
@@ -59,7 +59,7 @@ const advertSchema = new mongoose.Schema(
       required: true,
     },
     subscriptionPrice: {
-      type: Number,
+      type: String,
       required: true,
     },
     isPublished: {
@@ -67,7 +67,7 @@ const advertSchema = new mongoose.Schema(
       default: false,
       required: true,
     },
-    Address: {
+    address: {
       province: {
         type: String,
         required: true,

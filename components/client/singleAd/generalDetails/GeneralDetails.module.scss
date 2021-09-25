@@ -1,0 +1,44 @@
+@import '../../../../styles//scss/variables.scss';
+
+.details {
+  background-color: $white;
+  margin: 5px 0;
+  border-radius: 6px;
+  // drop shadow
+box-shadow: 0px 2px 3px 0px rgba(63,92,118,0.75);
+-webkit-box-shadow: 0px 2px 3px 0px rgba(63,92,118,0.75);
+-moz-box-shadow: 0px 2px 3px 0px rgba(63,92,118,0.75);
+}
+.generalDetails {
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+}
+.heading {
+color:$blue-2;
+font-family: 'Inter-Medium';
+font-size: 18px;
+line-height: 24px;
+padding:10px 0 20px 10px;
+
+}
+.left, .right {
+ p{
+  color:$blue-2;
+  font-family: 'Inter-Regular';
+  font-size: 14px;
+  line-height: 24px;
+  padding-bottom: 20px;
+  span {
+    color:$blue-2;
+    font-family: 'Inter-Medium';
+    font-size: 17px;
+    line-height: 24px;
+    padding-bottom: 20px;
+  }
+ }
+}
+.right, .left {
+  padding-left:15px;
+}

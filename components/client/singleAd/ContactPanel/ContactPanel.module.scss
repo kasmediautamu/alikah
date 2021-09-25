@@ -1,0 +1,70 @@
+@import '../../../../styles/scss/variables.scss';
+
+.contactpanel {
+  margin: 0 15px;
+  button {
+    width:100%;
+    margin-top:10px;
+  }
+}
+.offerPanel,.profilePanel, .safetyTips {
+  padding:15px;
+  background-color: $white;
+  margin: 5px;
+  border-radius: 6px;
+  // drop shadow
+box-shadow: 0px 2px 3px 0px rgba(63,92,118,0.75);
+-webkit-box-shadow: 0px 2px 3px 0px rgba(63,92,118,0.75);
+-moz-box-shadow: 0px 2px 3px 0px rgba(63,92,118,0.75);
+}
+.offerPanel {
+  p {
+    font-size: 24px;
+    font-family: 'Inter-Bold';
+    line-height: 30px;
+    color:$brown-1;
+    text-align: center;
+    padding-bottom: 10px;
+  }
+  button {
+    width:100%;
+  }
+  span {
+    font-family: 'Inter-SemiBold';
+    font-size:20px;
+    line-height: 16px;
+  }
+}
+.profilePanel {
+  button {
+    width:100%;
+    margin-bottom: 5px;
+  }
+}
+.profile {
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.background {
+  display:flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  padding:10px;
+  p{
+    padding:5px;
+    background-color: $blue-1;
+    margin-left:5px;
+    border-radius: 4px;
+    font-family: 'Inter-Light';
+    font-size: 12px;
+    line-height: 15px;
+  }
+}
+.profilename {
+  color:$blue-2;
+  font-size: 24px;
+  font-family: 'Inter-Bold';
+  line-height: 30px;
+  padding-left:15px;
+}

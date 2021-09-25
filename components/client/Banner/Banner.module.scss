@@ -5,11 +5,10 @@
     // padding:0px 100px;
 }
 .searchArea {
-    flex-basis: 30%;
+    min-width: 500px;
     padding-right: 15px;
 }
 .location {
-    flex-basis: 30%;
     padding-right:15px;
 }
 .actionBtn {

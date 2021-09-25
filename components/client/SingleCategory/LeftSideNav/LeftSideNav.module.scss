@@ -1,0 +1,93 @@
+@import '../../../../styles/scss/variables.scss';
+.leftsidenav {
+  width:100%;
+  background-color: $white;
+  margin: 5px;
+  margin-left:10px;
+  border-radius: 6px;
+  padding:8px;
+    // drop shadow
+  box-shadow: 0px 2px 3px 0px rgba(63,92,118,0.75);
+  -webkit-box-shadow: 0px 2px 3px 0px rgba(63,92,118,0.75);
+  -moz-box-shadow: 0px 2px 3px 0px rgba(63,92,118,0.75);
+}
+.head {
+  display:flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+
+}
+.title,.resetbtn {
+  color:$brown-1;
+  font-family: 'Inter-Medium';
+  font-size: 13px;
+  line-height: 20px;
+}
+.resetbtn {
+color: $blue-2;
+color:$blue-5;
+font-size: 12px;
+font-family: 'Inter-Medium';
+cursor: pointer;
+}
+.subtitle {
+padding-left:15px;
+color:$blue-5;
+font-family: 'Inter-Medium';
+font-size: 13px;
+line-height: 17px;
+}
+.categorieslist {
+  padding-left: 25px;
+}
+.citylist {
+   padding-left:25px;
+}
+.location {
+  padding-left: 15px;
+color:$blue-5;
+font-family: 'Inter-Medium';
+font-size: 13px;
+line-height: 17px;
+}
+.viewmorebtn {
+  text-align: center;
+  color:$blue-4;
+  font-size: 13px;
+  line-height: 17px;
+  font-family: 'Inter-Medium';
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+.list {
+  list-style: none;
+  li {
+    color: $blue-2;
+    font-size: 15px;
+    line-height: 18px;
+    font-family: 'Inter-Regular';
+    padding: 5px 0;
+    cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+    }
+    span {
+      color:$blue-5;
+      font-size: 12px;
+      font-family: 'Inter-Medium';
+    }
+  }
+}
+.categoryname {
+  color:$brown-1;
+  font-size: 14px;
+  font-family: 'Inter-Medium';
+  line-height: 18px;
+  &:hover{
+    text-decoration: underline;
+  }
+}

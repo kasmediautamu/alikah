@@ -9,7 +9,7 @@ const SearchField: React.FC<FormControlProps> = (props) => {
 		<div className={s.root}>
 			<img className={s.icon} src='./icons/search-icon.svg' alt='search' />
 
-			<FormControl className={s.input} type='text' placeholder='Search by Term e.g car' {...props} />
+			<FormControl className={s.input} type='text' placeholder=' What are you looking for?' {...props} />
 		</div>
 	);
 };

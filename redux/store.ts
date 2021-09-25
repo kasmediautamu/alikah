@@ -2,7 +2,7 @@ import { useMemo } from 'react'
 import { createStore, applyMiddleware } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import thunkMiddleware from 'redux-thunk'
-import reducers from './Reducers/reducers'
+import reducers from './Reducers'
 
 let store
 
@@ -40,3 +40,6 @@ export function useStore(initialState) {
   const store = useMemo(() => initializeStore(initialState), [initialState])
   return store
 }
+
+export type RootState = ReturnType<typeof store.getState>
+export type AppDispatch = typeof store.dispatch

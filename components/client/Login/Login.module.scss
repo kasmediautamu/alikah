@@ -1,6 +1,6 @@
 @import '../../../styles//scss/variables.scss';
 .auth{
-    margin:20px 200px;
+    margin:20px 50px;
     display:flex;
     flex-direction:row;
     justify-content: space-between;
@@ -27,13 +27,13 @@
   max-width:80%;
 }
 .form {
-    flex-basis: 49%;
+    flex-basis: 35%;
 }
 .field{
   padding:8px 0;
 }
 .registrationLink{
-    flex-basis: 49%;
+    flex-basis: 45%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -42,5 +42,30 @@
   margin-top: auto;
   a button {
     font-family: 'Inter-Regular';
+  }
+}
+.socialLogin {
+  // flex-basis: 20%;
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: center;
+  // align-items: center;
+
+  button {
+    margin-bottom: 20px;
+    width:100%;
+  }
+}
+.socialhead {
+  font-family: 'Inter-Regular';
+  font-size: 20px;
+  line-height: 24px;
+  color:$blue-2;
+  padding:15px 0;
+  text-align: center;
+}
+.registrationLinkBtn{
+  button {
+    width:100%;
   }
 }

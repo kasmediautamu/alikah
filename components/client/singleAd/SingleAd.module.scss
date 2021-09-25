@@ -1,0 +1,33 @@
+@import '../../../styles/scss/variables.scss';
+.singleadPage{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0px 100px;
+}
+.left {
+  flex-basis: 60%;
+}
+.right {
+  flex-basis: 40%;
+}
+
+.relatedAds {
+  color:$blue-2;
+  font-family: 'Inter-Medium';
+  font-size: 18px;
+  line-height: 24px;
+  padding: 20px 0;
+}
+.viewmore {
+  text-align: center;
+  cursor: pointer;
+  color:$blue-2;
+  font-family: "inter-Medium";
+  font-size: 12px;
+  line-height: 15px;
+  margin: 20px 0;
+  &:hover {
+    text-decoration: underline;
+  }
+}

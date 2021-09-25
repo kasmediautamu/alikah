@@ -1,0 +1,12 @@
+.sliderImageWrapper {
+  display:flex;
+  flex-direction: row;
+  img{
+  width:100%;
+  object-fit: fill;
+  }
+}
+.carouselSize {
+  width:100%;
+  padding:0 10px 10px 10px;
+}

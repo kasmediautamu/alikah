@@ -1,6 +1,8 @@
+import NextLink from 'next/link';
 import Link from "next/link";
 import { useState } from "react";
 import DropdownSelect from "../FormFields/Select";
+import Banner from "../Banner"
 import s from "./Nav.module.scss";
 
 const Nav = () => {
@@ -8,7 +10,6 @@ const Nav = () => {
   function PostAdButton() {
     return (
       <div className={s.btnWrapper}>
-        <img src="/icons/add-post.svg" alt="Alikah add post icon" />
         <Link href="/create-free-ad">Post free Ad</Link>
       </div>
     );
@@ -16,7 +17,7 @@ const Nav = () => {
   function CountryCollection() {
     return (
       <>
-        South Africa
+      {/* country */}
         <DropdownSelect
           items={["Pretoria", "Soweto", "Bloemfonteim"]}
           value={City === "" ? "Select City" : City}
@@ -31,7 +32,12 @@ const Nav = () => {
     <nav className={s.nav}>
       <ul className={s.left}>
         <li className={`${s.navItem} ${s.logo}`}>
-          <Link href="/">Alikah Ads</Link>
+        <NextLink
+            href={`/`}
+            passHref
+          >
+            <Link href="/">a</Link>
+          </NextLink>
         </li>
         <li className={s.navItem}>South Africa</li>
         <li className={s.navItem}>
@@ -42,12 +48,9 @@ const Nav = () => {
             setCity(value);
           }}
         /></li>
-
+        <li><Banner /></li>
       </ul>
       <ul className={s.right}>
-        <li className={s.navItem}>
-          <Link href="/account">Favourite Ads</Link>
-        </li>
         <li className={`${s.navItem} ${s.addPostBtn}`}>
           <PostAdButton />
         </li>

@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 import s from  './PopularCategories.module.scss'
 interface Category {
@@ -22,9 +23,11 @@ const Category = () => {
     <div className={s.categories}>
     { Categories && Categories .map((category)=>{
         return (
+            <Link href={`/category`}>
             <div className ={s.card} key={category.title}>
             <p>{category.title}</p>
             </div>
+            </Link>
         )
     })}
     </div>

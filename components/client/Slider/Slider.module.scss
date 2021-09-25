@@ -1,0 +1,55 @@
+@import '../../../styles//scss/variables.scss';
+@import '../../../styles//scss/slider.scss';
+.adWrapper {
+  img{
+      width:230px;
+      height:200px;
+      object-fit: fill;
+  }
+}
+.title {
+color:$blue-2;
+font-family: 'Inter-Regular';
+font-size: 15px;
+line-height: 18px;
+text-align:left;
+padding-left: 10px;
+}
+.price {
+color:$blue-2;
+text-align:left;
+padding-left: 10px;
+padding-right: 10px;
+color: $blue-5;
+font-family: 'Inter-SemiBold';
+font-size: 13px;
+}
+.province {
+color:$blue-2;
+font-family: 'Inter-Light';
+font-size: 14px;
+line-height: 18px;
+text-align:left;
+padding-left: 10px;
+}
+.city {
+  color:$blue-2;
+  font-family: 'Inter-Light';
+  font-size: 14px;
+  line-height: 18px;
+  text-align:left;
+  padding-left: 10px;
+  padding-bottom: 10px;
+}
+.priceTitle {
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: 10px;
+  flex-wrap: wrap;
+}
+.location {
+  display:flex;
+  flex-direction: row;
+  padding-top: 10px;
+}
