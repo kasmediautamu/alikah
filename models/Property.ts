@@ -23,7 +23,7 @@ const propertySchema = new mongoose.Schema(
     },
     availableTo: {
       type: String,
-      required: false
+      required: false,
     },
     dwellingType: {
       type: String,
@@ -31,43 +31,43 @@ const propertySchema = new mongoose.Schema(
     },
     bedRooms: {
       type: String,
-      required: false
+      required: false,
     },
     shareBasis: {
       type: String,
-      required: false
+      required: false,
     },
     parking: {
       type: String,
-      required: false
+      required: false,
     },
     bathrooms: {
       type: String,
-      required: false
+      required: false,
     },
     size: {
       type: String,
-      required: false
+      required: false,
     },
     petFriendly: {
       type: String,
-      required: false
+      required: false,
     },
     smoking: {
       type: String,
-      required: false
+      required: false,
     },
     prefferedGender: {
       type: String,
-      required: false
+      required: false,
     },
     furnished: {
       type: String,
-      required: false
+      required: false,
     },
     minimumNights: {
       type: String,
-      required: false
+      required: false,
     },
     forRentBy: {
       type: String,

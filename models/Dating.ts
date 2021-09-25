@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 
-const advertSchema = new mongoose.Schema(
+const datingSchema = new mongoose.Schema(
   {
     title: {
       type: String,
@@ -12,12 +12,6 @@ const advertSchema = new mongoose.Schema(
     userId: {
       type: String,
       required: true,
-    },
-    category: {
-      type: String,
-      required: true,
-      max: 100,
-      unique: false,
     },
     subcategory: {
       type: String,
@@ -77,7 +71,7 @@ const advertSchema = new mongoose.Schema(
         required: false,
         max: 50,
       },
-      phone: {
+      phoneNumber: {
         type: String,
         required: false,
         max: 25,
@@ -86,5 +80,5 @@ const advertSchema = new mongoose.Schema(
   },
   { timestamps: true }
 )
-const Advert = mongoose.models.Advert || mongoose.model('Advert', advertSchema)
-export default Advert
+const Dating = mongoose.models.Dating || mongoose.model('Dating', datingSchema)
+export default Dating

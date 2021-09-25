@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 
-const advertSchema = new mongoose.Schema(
+const electronicsSchema = new mongoose.Schema(
   {
     title: {
       type: String,
@@ -13,11 +13,22 @@ const advertSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    category: {
+    jobType: {
       type: String,
-      required: true,
+      required: false,
       max: 100,
-      unique: false,
+    },
+    advertisedBy: {
+      type: String,
+      required: false,
+    },
+    forsaleBy: {
+      type: String,
+      required: false,
+    },
+    websiteLink: {
+      type: String,
+      required: false,
     },
     subcategory: {
       type: String,
@@ -77,7 +88,7 @@ const advertSchema = new mongoose.Schema(
         required: false,
         max: 50,
       },
-      phone: {
+      phoneNumber: {
         type: String,
         required: false,
         max: 25,
@@ -86,5 +97,5 @@ const advertSchema = new mongoose.Schema(
   },
   { timestamps: true }
 )
-const Advert = mongoose.models.Advert || mongoose.model('Advert', advertSchema)
-export default Advert
+const Electronics = mongoose.models.Electronics || mongoose.model('Electronics', electronicsSchema)
+export default Electronics

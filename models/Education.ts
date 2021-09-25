@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 
-const advertSchema = new mongoose.Schema(
+const educationSchema = new mongoose.Schema(
   {
     title: {
       type: String,
@@ -13,12 +13,11 @@ const advertSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    category: {
+    websiteLink: {
       type: String,
-      required: true,
-      max: 100,
-      unique: false,
+      required: false,
     },
+
     subcategory: {
       type: String,
       required: true,
@@ -77,7 +76,7 @@ const advertSchema = new mongoose.Schema(
         required: false,
         max: 50,
       },
-      phone: {
+      phoneNumber: {
         type: String,
         required: false,
         max: 25,
@@ -86,5 +85,5 @@ const advertSchema = new mongoose.Schema(
   },
   { timestamps: true }
 )
-const Advert = mongoose.models.Advert || mongoose.model('Advert', advertSchema)
-export default Advert
+const Education = mongoose.models.Education || mongoose.model('Education', educationSchema)
+export default Education
