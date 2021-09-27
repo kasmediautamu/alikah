@@ -7,13 +7,15 @@ import Form from 'react-bootstrap/Form';
 import { FormControlProps } from 'react-bootstrap/FormControl';
 // Utils
 import classnames from 'classnames';
+import { placeholder } from '@babel/types';
 
 interface ITextFieldProps {
 	id?: string;
 	className?: string;
 	formControlProps?: FormControlProps;
 	label?: string;
-  fieldname?: string
+  fieldname?: string;
+  placeholderText?:string;
 	/**
 	 * A message error
 	 */
@@ -30,6 +32,7 @@ const TextField: React.FC<ITextFieldProps> = ({
 	error,
 	type,
   fieldname,
+  placeholderText,
   changefunction
 }) => {
 	return (
@@ -45,6 +48,7 @@ const TextField: React.FC<ITextFieldProps> = ({
 				type = {type}
 				className={classnames(s.input, formControlProps ? formControlProps.className : '')}
         name = {fieldname}
+        placeholder={placeholderText}
         onChange ={changefunction}
 			/>
 

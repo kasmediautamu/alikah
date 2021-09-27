@@ -2,19 +2,32 @@
 {
 "id":1,
 "title":"Bronze",
-"price":30000,
+"price":99,
 "period":"7 days"
 },
 {
   "id":2,
   "title":"Silver",
-  "price":42000,
+  "price":199,
   "period":"14 days"
   },
   {
     "id":3,
     "title":"Gold",
-    "price":56000,
+    "price":299,
     "period":"30 days"
-    }
+    },
+    {
+      "id":4,
+      "title":"Gold Plus",
+      "price":1099,
+      "period":"6 months"
+      }
+      ,
+    {
+      "id":5,
+      "title":"Diamond",
+      "price":2099,
+      "period":"1 year"
+      }
 ]

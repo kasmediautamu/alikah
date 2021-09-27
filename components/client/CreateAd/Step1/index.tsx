@@ -130,6 +130,7 @@ const StepForm1 = () => {
       router.push(redirect || '/')
     } catch (err) {
       // enqueueSnackbar(getError(err), { variant: 'error' });
+      console.log(err)
     }
   }
   return (

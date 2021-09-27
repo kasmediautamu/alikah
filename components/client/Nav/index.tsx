@@ -6,7 +6,7 @@ import Banner from "../Banner"
 import s from "./Nav.module.scss";
 
 const Nav = () => {
-  const [City, setCity] = useState<string>("");
+  const [Country, setCountry] = useState<string>("South Africa");
   function PostAdButton() {
     return (
       <div className={s.btnWrapper}>
@@ -18,13 +18,13 @@ const Nav = () => {
     return (
       <>
       {/* country */}
-        <DropdownSelect
+        {/* <DropdownSelect
           items={["Pretoria", "Soweto", "Bloemfonteim"]}
           value={City === "" ? "Select City" : City}
           onChange={(value: string) => {
             setCity(value);
           }}
-        />
+        /> */}
       </>
     );
   }
@@ -39,13 +39,13 @@ const Nav = () => {
             <Link href="/">a</Link>
           </NextLink>
         </li>
-        <li className={s.navItem}>South Africa</li>
+        <li className={s.navItem}>{Country && Country}</li>
         <li className={s.navItem}>
           <DropdownSelect
-          items={["Pretoria", "Soweto", "Bloemfonteim"]}
-          value={City === "" ? "Select City" : City}
+          items={["South Africa", "Swaziland", "Namibia","Zimbabwe","Malawi","Botswana"]}
+          value={Country === "" ? "Select Country" : Country}
           onChange={(value: string) => {
-            setCity(value);
+            setCountry(value);
           }}
         /></li>
         <li><Banner /></li>

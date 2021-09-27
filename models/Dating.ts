@@ -43,8 +43,7 @@ const datingSchema = new mongoose.Schema(
     },
     subscriptionType: {
       type: String,
-      required: true,
-      default: 'standard',
+      required: true
     },
     isPaid: {
       type: Boolean,
@@ -52,7 +51,7 @@ const datingSchema = new mongoose.Schema(
       required: true,
     },
     subscriptionPrice: {
-      type: String,
+      type: Number,
       required: true,
     },
     isPublished: {
