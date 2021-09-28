@@ -11,12 +11,12 @@ import DropdownSelect from '../../FormFields/Select'
 import TextField from '../../FormFields/TextField'
 import TextAreaField from '../../FormFields/Textarea'
 // styles
-import s from './Education.module.scss'
+import s from './Electronics.module.scss'
 // local data
 
 import southafrica from '../../../../dummyData/countries/southafrica.json'
 import sponsorships from '../../../../dummyData/sponsorships.json'
-import education from '../../../../dummyData/subcategories/education.json'
+import electronics from '../../../../dummyData/subcategories/electronics&furniture.json'
 import ValidationMessage from '../../FormFields/Error'
 // redux
 const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
@@ -30,7 +30,7 @@ const initialFormState = {
   phone: '',
 }
 
-const EducationForm = () => {
+const ElectronicsForm = () => {
   // useEffect(() => {
   //   if (!userInfo._id) {
   //     router.push('/login')
@@ -60,7 +60,7 @@ const EducationForm = () => {
   const [formError, setFormError] = useState(null)
   const [message, setMessage] = useState('')
   /**images array */
-  const educationImages = [url, url1, url2]
+  const electronicsImages = [url, url1, url2]
   //userId: userInfo ? userInfo._id : null
   const submittedForm = {
     title: formData.title,
@@ -93,7 +93,7 @@ const EducationForm = () => {
       .then((resp) => resp.json())
       .then((data) => {
         setUrl(data.url)
-        console.log(educationImages)
+        console.log(electronicsImages)
       })
       .catch((err) => console.log(err))
   }
@@ -124,7 +124,7 @@ const EducationForm = () => {
       .then((resp) => resp.json())
       .then((data) => {
         setUrl2(data.url)
-        console.log(educationImages)
+        console.log(electronicsImages)
       })
       .catch((err) => console.log(err))
   }
@@ -191,7 +191,7 @@ const EducationForm = () => {
     }
 
     try {
-      const { data } = await axios.post('/api/education', {
+      const { data } = await axios.post('/api/electronics', {
         ...submittedForm,
       })
       // console.log(data)
@@ -275,7 +275,7 @@ const EducationForm = () => {
         {/* sub category */}
         {message && <small className={s.postalert}>{message}</small>}
         <DropdownSelect
-          items={education.Education}
+          items={electronics.electronics}
           value={subcategory === '' ? 'Select Sub Category*' : subcategory}
           onChange={(value) => {
             setSubCategory(value)
@@ -409,4 +409,4 @@ const EducationForm = () => {
     </div>
   )
 }
-export default EducationForm
+export default ElectronicsForm

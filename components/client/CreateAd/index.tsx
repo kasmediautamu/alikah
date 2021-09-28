@@ -5,6 +5,9 @@ import DatingForm from './Dating'
 import DropdownSelect from '../FormFields/Select'
 import categories from '../../../dummyData/categories.json'
 import ServicesForm from './Services'
+import EducationForm from './Education'
+import FashionForm from './Fashion'
+import ElectronicsForm from './Electronics'
 
 const CreateAd = () => {
   const [form, setForm] = useState('')
@@ -30,10 +33,10 @@ const CreateAd = () => {
         {form === 'Dating' && <><DatingForm /></>}
         {form === 'Services' && <><ServicesForm /></>}
         {form === 'Vehicles' && <>vehicles form</>}
-        {form === 'Fashion' && <>fashion form</>}
+        {form === 'Fashion' && <><FashionForm /></>}
         {form === 'Jobs' && <>jobs form</>}
-        {form === 'Electronics & Furniture' && <>electronics form</>}
-        {form === 'Education & Books' && <>education form</>}
+        {form === 'Electronics & Furniture' && <><ElectronicsForm /></>}
+        {form === 'Education & Books' && <><EducationForm /></>}
         {form === 'Local Manufacturers' && <>manufacture form</>}
         {form === 'PPE & Covid19 essentials services' && <>ppe form</>}
         {form === 'Property' && <>property form</>}
