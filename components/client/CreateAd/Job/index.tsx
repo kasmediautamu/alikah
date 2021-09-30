@@ -11,12 +11,11 @@ import DropdownSelect from '../../FormFields/Select'
 import TextField from '../../FormFields/TextField'
 import TextAreaField from '../../FormFields/Textarea'
 // styles
-import s from './Education.module.scss'
-// local data
-
+import s from './Job.module.scss'
+// locah data
 import southafrica from '../../../../dummyData/countries/southafrica.json'
 import sponsorships from '../../../../dummyData/sponsorships.json'
-import education from '../../../../dummyData/subcategories/education.json'
+import job from '../../../../dummyData/subcategories/job.json'
 import ValidationMessage from '../../FormFields/Error'
 // redux
 const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
@@ -27,10 +26,11 @@ const initialFormState = {
   saleprice: '',
   province: '',
   city: '',
-  phoneNumber: '',
+  companyName:'',
+  phoneNumber:''
 }
 
-const EducationForm = () => {
+const JobForm = () => {
   // useEffect(() => {
   //   if (!userInfo._id) {
   //     router.push('/login')
@@ -55,16 +55,23 @@ const EducationForm = () => {
   const [subscriptionType, setSubscriptionType] = useState<string>('Standard')
   const [promotionPrice, setPromotionPrice] = useState<Number>(0)
   const [subcategory, setSubCategory] = useState<string>('')
+  const [jobType, setJobType] = useState<string>('')
+  const [advertisedBy, setAdvertisedBy] = useState<string>('')
+  const [employmentEquity, setEmploymentEquity] = useState<string>('')
   const [pricingType, setPricingType] = useState<string>('Amount')
   const [formData, setFormData] = useState(initialFormState)
   const [formError, setFormError] = useState(null)
   const [message, setMessage] = useState('')
   /**images array */
-  const educationImages = [url, url1, url2]
+  const jobImages = [url, url1, url2]
   //userId: userInfo ? userInfo._id : null
   const submittedForm = {
     title: formData.title,
     userId: '125',
+    jobType: jobType,
+    advertisedBy:advertisedBy,
+    companyName:formData.companyName,
+    employmentEquity:employmentEquity,
     subcategory: subcategory,
     description: formData.description,
     imageURL: [url, url1, url2],
@@ -93,7 +100,7 @@ const EducationForm = () => {
       .then((resp) => resp.json())
       .then((data) => {
         setUrl(data.url)
-        console.log(educationImages)
+        console.log(jobImages)
       })
       .catch((err) => console.log(err))
   }
@@ -124,7 +131,7 @@ const EducationForm = () => {
       .then((resp) => resp.json())
       .then((data) => {
         setUrl2(data.url)
-        console.log(educationImages)
+        console.log(jobImages)
       })
       .catch((err) => console.log(err))
   }
@@ -147,17 +154,17 @@ const EducationForm = () => {
       }
       return error
     }
-    if (formData.phoneNumber === '') {
-      error = {
-        field_id: 'phoneNumber',
-        message: 'Provide Phone Number To Reach You',
-      }
-      return error
-    }
     if (formData.city === '') {
       error = {
         field_id: 'city',
         message: 'City is required',
+      }
+      return error
+    }
+    if (formData.phoneNumber === '') {
+      error = {
+        field_id: 'phoneNumber',
+        message: 'Provide A Phone Number To Reach You',
       }
       return error
     }
@@ -198,7 +205,7 @@ const EducationForm = () => {
     }
 
     try {
-      const { data } = await axios.post('/api/education', {
+      const { data } = await axios.post('/api/job', {
         ...submittedForm,
       })
       // console.log(data)
@@ -207,7 +214,7 @@ const EducationForm = () => {
       } else {
         setMessage('Something is Wrong, Please Again')
       }
-      router.push(redirect || '/account')
+       router.push(redirect || '/account')
     } catch (err) {
       // enqueueSnackbar(getError(err), { variant: 'error' });
       console.log(err)
@@ -282,7 +289,7 @@ const EducationForm = () => {
         {/* sub category */}
         {message && <small className={s.postalert}>{message}</small>}
         <DropdownSelect
-          items={education.Education}
+          items={job.jobs}
           value={subcategory === '' ? 'Select Sub Category*' : subcategory}
           onChange={(value) => {
             setSubCategory(value)
@@ -301,6 +308,56 @@ const EducationForm = () => {
           changefunction={onchange}
           error={formError && formError.field_id === 'title' ? formError.message : ''}
         />
+        <div className={s.selection}>
+          <p className={s.selectiontitle}>
+            Job Type
+          </p>
+        <div className={s.content}>
+        <DropdownSelect
+          items={job.jobType}
+          value={jobType === '' ? 'Select Job Type*' : jobType}
+          onChange={(value) => {
+            setJobType(value)
+          }}
+        />
+        </div>
+        </div>
+        <div className={s.selection}>
+          <p className={s.selectiontitle}>
+            Advertised By
+          </p>
+          <div className={s.content}>
+        <DropdownSelect
+          items={job.advertisedBy}
+          value={advertisedBy === '' ? 'Advertised By*' : advertisedBy}
+          onChange={(value) => {
+            setAdvertisedBy(value)
+          }}
+        />
+        </div>
+
+        </div>
+        <TextField
+          className={s.textField}
+          label="Company Name"
+          fieldname={'companyName'}
+          placeholderText={'Enter Company Name'}
+          changefunction={onchange}
+        />
+         <div className={s.selection}>
+          <p className={s.selectiontitle}>
+            Employment Equity
+          </p>
+          <div className={s.content}>
+        <DropdownSelect
+          items={job.employmentEquity}
+          value={employmentEquity === '' ? 'Select Employment Equity' : employmentEquity}
+          onChange={(value) => {
+            setEmploymentEquity(value)
+          }}
+        />
+        </div>
+        </div>
         <TextAreaField
           placeholder={'Description*'}
           label="Description*"
@@ -308,7 +365,6 @@ const EducationForm = () => {
           changefunction={onchange}
           error={formError && formError.field_id === 'description' ? formError.message : ''}
         />
-
         <TextField
           className={s.textField}
           label="Phone Number*"
@@ -426,4 +482,4 @@ const EducationForm = () => {
     </div>
   )
 }
-export default EducationForm
+export default JobForm

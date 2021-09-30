@@ -1,0 +1,33 @@
+{
+  "electronics":[
+    "Audio & Headphones",
+    "Cameras & Accessories",
+    "Computers, Software & Components",
+    "Drones",
+    "Gaming & VR",
+    "Tv, Hi-Fi & Home Appliances",
+    "Laptops, Notebooks & Accessories",
+    "Phones, Mobiles & Accessories",
+    "Smartwatches",
+    "Surveillance & Smart Home Electronics",
+    "Tablets & Readers",
+    "Home furniture and Deco",
+    "Office Furniture and deco",
+    "DIY, Tools & Home Improvement",
+    "Garden, Outdoor Living & Plants",
+    "Kitchenware",
+    "Lamps & Lighting",
+    "Stationary ",
+    "Other Items"
+  ],
+  "forSaleBy":[
+    "Owner",
+    "Dealer"
+  ],
+  "condition":[
+    "New",
+    "Used",
+    "Refurbished",
+    "Other"
+  ]
+}

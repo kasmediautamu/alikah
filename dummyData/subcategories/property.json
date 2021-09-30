@@ -11,5 +11,62 @@
       "Commercial Properties for Rent",
       "Commercial Properties for Sale",
       "Other"
+  ],
+  "dwellingType": [
+    "Apartment",
+    "Townhouse-Villa",
+    "Farm",
+    "House",
+    "Other Aparment"
+  ],
+  "forRentBy": [
+    "Owner",
+    "Agency"
+  ],
+  "forSaleBy": [
+    "Owner",
+    "Agency"
+  ],
+  "parking": [
+    "Garage",
+    "Covered",
+    "Street",
+    "Off Street",
+    "Secure Parking",
+    "None"
+  ],
+  "smoking":[
+    "Yes",
+    "No"
+  ],
+  "petFriendly":[
+    "Yes",
+    "No"
+  ],
+  "bedrooms":[
+    "Studio or Bachelor Pad",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6+"
+  ],
+  "bathrooms":[
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6+"
+  ],
+  "sharebasis":[
+    "Room Share",
+    "Flat OR House Share"
+  ],
+  "prefferredGender":[
+    "Male",
+    "Female",
+    "No Preferrance"
   ]
 }

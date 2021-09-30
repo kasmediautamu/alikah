@@ -11,12 +11,12 @@ import DropdownSelect from '../../FormFields/Select'
 import TextField from '../../FormFields/TextField'
 import TextAreaField from '../../FormFields/Textarea'
 // styles
-import s from './Education.module.scss'
-// local data
+import s from './Property.module.scss'
+// locah data
 
 import southafrica from '../../../../dummyData/countries/southafrica.json'
 import sponsorships from '../../../../dummyData/sponsorships.json'
-import education from '../../../../dummyData/subcategories/education.json'
+import property from '../../../../dummyData/subcategories/property.json'
 import ValidationMessage from '../../FormFields/Error'
 // redux
 const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
@@ -30,7 +30,7 @@ const initialFormState = {
   phoneNumber: '',
 }
 
-const EducationForm = () => {
+const PropertyForm = () => {
   // useEffect(() => {
   //   if (!userInfo._id) {
   //     router.push('/login')
@@ -60,12 +60,27 @@ const EducationForm = () => {
   const [formError, setFormError] = useState(null)
   const [message, setMessage] = useState('')
   /**images array */
-  const educationImages = [url, url1, url2]
+  const propertyImages = [url, url1, url2]
   //userId: userInfo ? userInfo._id : null
   const submittedForm = {
     title: formData.title,
     userId: '125',
     subcategory: subcategory,
+    availableFrom:'',
+    availableTo:'',
+    dwellingType:'',
+    bedRooms:'',
+    shareBasis:'',
+    parking:'',
+    bathrooms:'',
+    size:'',
+    petFriendly:'',
+    smoking:'',
+    prefferedGender:'',
+    furnished:'',
+    minimumNights: '',
+    forRentBy:'',
+    forSaleBy:'',
     description: formData.description,
     imageURL: [url, url1, url2],
     country: country,
@@ -93,7 +108,7 @@ const EducationForm = () => {
       .then((resp) => resp.json())
       .then((data) => {
         setUrl(data.url)
-        console.log(educationImages)
+        console.log(propertyImages)
       })
       .catch((err) => console.log(err))
   }
@@ -124,7 +139,7 @@ const EducationForm = () => {
       .then((resp) => resp.json())
       .then((data) => {
         setUrl2(data.url)
-        console.log(educationImages)
+        console.log(propertyImages)
       })
       .catch((err) => console.log(err))
   }
@@ -198,7 +213,7 @@ const EducationForm = () => {
     }
 
     try {
-      const { data } = await axios.post('/api/education', {
+      const { data } = await axios.post('/api/property', {
         ...submittedForm,
       })
       // console.log(data)
@@ -207,7 +222,7 @@ const EducationForm = () => {
       } else {
         setMessage('Something is Wrong, Please Again')
       }
-      router.push(redirect || '/account')
+       router.push(redirect || '/account')
     } catch (err) {
       // enqueueSnackbar(getError(err), { variant: 'error' });
       console.log(err)
@@ -282,7 +297,7 @@ const EducationForm = () => {
         {/* sub category */}
         {message && <small className={s.postalert}>{message}</small>}
         <DropdownSelect
-          items={education.Education}
+          items={property.property}
           value={subcategory === '' ? 'Select Sub Category*' : subcategory}
           onChange={(value) => {
             setSubCategory(value)
@@ -308,8 +323,7 @@ const EducationForm = () => {
           changefunction={onchange}
           error={formError && formError.field_id === 'description' ? formError.message : ''}
         />
-
-        <TextField
+          <TextField
           className={s.textField}
           label="Phone Number*"
           fieldname={'phoneNumber'}
@@ -317,6 +331,7 @@ const EducationForm = () => {
           changefunction={onchange}
           error={formError && formError.field_id === 'phoneNumber' ? formError.message : ''}
         />
+
         {/* country, provinces, cities */}
         <div className={s.addressgroup}>
           <div className={s.stretchright}>
@@ -426,4 +441,4 @@ const EducationForm = () => {
     </div>
   )
 }
-export default EducationForm
+export default PropertyForm

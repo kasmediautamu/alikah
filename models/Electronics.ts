@@ -26,10 +26,6 @@ const electronicsSchema = new mongoose.Schema(
       type: String,
       required: false,
     },
-    websiteLink: {
-      type: String,
-      required: false,
-    },
     subcategory: {
       type: String,
       required: true,
@@ -61,7 +57,6 @@ const electronicsSchema = new mongoose.Schema(
     subscriptionType: {
       type: String,
       required: true,
-      default: 'standard',
     },
     isPaid: {
       type: Boolean,

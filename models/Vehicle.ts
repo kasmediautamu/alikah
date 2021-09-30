@@ -63,11 +63,6 @@ const vehicleSchema = new mongoose.Schema(
       type: String,
       required: false,
     },
-
-    websiteLink: {
-      type: String,
-      required: false,
-    },
     description: {
       type: String,
       required: true,
@@ -94,7 +89,6 @@ const vehicleSchema = new mongoose.Schema(
     subscriptionType: {
       type: String,
       required: true,
-      default: 'standard',
     },
     isPaid: {
       type: Boolean,
@@ -130,5 +124,6 @@ const vehicleSchema = new mongoose.Schema(
   },
   { timestamps: true }
 )
-const Vehicle = mongoose.models.vehicleSchema || mongoose.model('Vehicle', vehicleSchema)
-export default Vehicle
+ const Vehicle = mongoose.models.Vehicle || mongoose.model('Vehicle', vehicleSchema)
+
+ export default Vehicle

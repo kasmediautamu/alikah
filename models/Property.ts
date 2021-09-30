@@ -79,10 +79,6 @@ const propertySchema = new mongoose.Schema(
       required: false,
       max: 100,
     },
-    websiteLink: {
-      type: String,
-      required: false,
-    },
     description: {
       type: String,
       required: true,

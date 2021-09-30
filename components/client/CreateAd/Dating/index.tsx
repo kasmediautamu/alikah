@@ -27,7 +27,7 @@ const initialFormState = {
   saleprice: '',
   province: '',
   city: '',
-  phone: '',
+  phoneNumber: '',
 }
 
 const DatingForm = () => {
@@ -77,7 +77,7 @@ const DatingForm = () => {
     address: {
       province: province,
       city: formData.city,
-      phoneNumber: userInfo ? userInfo.phoneNumber : '0700756217',
+      phoneNumber: formData.phoneNumber,
     },
   }
   // uploads image
@@ -144,6 +144,13 @@ const DatingForm = () => {
       error = {
         field_id: 'description',
         message: 'Advert Description is required',
+      }
+      return error
+    }
+    if (formData.phoneNumber === '') {
+      error = {
+        field_id: 'phoneNumber',
+        message: 'Provide Phone Number To Reach You',
       }
       return error
     }
@@ -290,6 +297,7 @@ const DatingForm = () => {
           className={s.textField}
           label="Title*"
           fieldname={'title'}
+          placeholderText={'Enter Advert Title'}
           changefunction={onchange}
           error={formError && formError.field_id === 'title' ? formError.message : ''}
         />
@@ -300,6 +308,15 @@ const DatingForm = () => {
           changefunction={onchange}
           error={formError && formError.field_id === 'description' ? formError.message : ''}
         />
+          <TextField
+          className={s.textField}
+          label="Phone Number*"
+          fieldname={'phoneNumber'}
+          placeholderText={'Enter Phone Number To Reach You'}
+          changefunction={onchange}
+          error={formError && formError.field_id === 'phoneNumber' ? formError.message : ''}
+        />
+
         {/* country, provinces, cities */}
         <div className={s.addressgroup}>
           <div className={s.stretchright}>

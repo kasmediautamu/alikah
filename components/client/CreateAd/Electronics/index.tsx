@@ -16,7 +16,7 @@ import s from './Electronics.module.scss'
 
 import southafrica from '../../../../dummyData/countries/southafrica.json'
 import sponsorships from '../../../../dummyData/sponsorships.json'
-import electronics from '../../../../dummyData/subcategories/electronics&furniture.json'
+import electronics from '../../../../dummyData/subcategories/electronics.json'
 import ValidationMessage from '../../FormFields/Error'
 // redux
 const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
@@ -27,7 +27,7 @@ const initialFormState = {
   saleprice: '',
   province: '',
   city: '',
-  phone: '',
+  phoneNumber: '',
 }
 
 const ElectronicsForm = () => {
@@ -56,6 +56,8 @@ const ElectronicsForm = () => {
   const [promotionPrice, setPromotionPrice] = useState<Number>(0)
   const [subcategory, setSubCategory] = useState<string>('')
   const [pricingType, setPricingType] = useState<string>('Amount')
+  const [forsaleby, setForSaleBy] = useState<string>('')
+  const [condition, setCondition] = useState<string>('')
   const [formData, setFormData] = useState(initialFormState)
   const [formError, setFormError] = useState(null)
   const [message, setMessage] = useState('')
@@ -77,7 +79,7 @@ const ElectronicsForm = () => {
     address: {
       province: province,
       city: formData.city,
-      phoneNumber: userInfo ? userInfo.phoneNumber : '0700756217',
+      phoneNumber: formData.phoneNumber,
     },
   }
   // uploads image
@@ -144,6 +146,13 @@ const ElectronicsForm = () => {
       error = {
         field_id: 'description',
         message: 'Advert Description is required',
+      }
+      return error
+    }
+    if (formData.phoneNumber === '') {
+      error = {
+        field_id: 'phoneNumber',
+        message: 'Provide Phone Number To Reach You',
       }
       return error
     }
@@ -290,15 +299,42 @@ const ElectronicsForm = () => {
           className={s.textField}
           label="Title*"
           fieldname={'title'}
+          placeholderText={'Enter Advert Title'}
           changefunction={onchange}
           error={formError && formError.field_id === 'title' ? formError.message : ''}
         />
+        <div className={s.seller}>
+        <DropdownSelect
+              items={electronics.forSaleBy}
+              value={forsaleby === '' ? 'For Sale By' : forsaleby}
+              onChange={(value: string) => {
+                setForSaleBy(value)
+              }}
+            />
+
+        </div>
+        <DropdownSelect
+              items={electronics.condition}
+              value={condition === '' ? 'Condition Of Item' : condition}
+              onChange={(value: string) => {
+                setCondition(value)
+              }}
+            />
+
         <TextAreaField
           placeholder={'Description*'}
           label="Description*"
           textareaName="description"
           changefunction={onchange}
           error={formError && formError.field_id === 'description' ? formError.message : ''}
+        />
+        <TextField
+          className={s.textField}
+          label="Phone Number*"
+          fieldname={'phoneNumber'}
+          placeholderText={'Enter Phone Number To Reach You'}
+          changefunction={onchange}
+          error={formError && formError.field_id === 'phoneNumber' ? formError.message : ''}
         />
         {/* country, provinces, cities */}
         <div className={s.addressgroup}>

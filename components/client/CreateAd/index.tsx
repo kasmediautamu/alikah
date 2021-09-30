@@ -8,6 +8,11 @@ import ServicesForm from './Services'
 import EducationForm from './Education'
 import FashionForm from './Fashion'
 import ElectronicsForm from './Electronics'
+import ManufucturersForm from './Manufucture'
+import PPEForm from './PPE'
+import JobForm from './Job'
+import PropertyForm from './Property'
+import VehiclesForm from './Vehicles'
 
 const CreateAd = () => {
   const [form, setForm] = useState('')
@@ -32,14 +37,14 @@ const CreateAd = () => {
       <div className="content">
         {form === 'Dating' && <><DatingForm /></>}
         {form === 'Services' && <><ServicesForm /></>}
-        {form === 'Vehicles' && <>vehicles form</>}
+        {form === 'Vehicles' && <><VehiclesForm /></>}
         {form === 'Fashion' && <><FashionForm /></>}
-        {form === 'Jobs' && <>jobs form</>}
+        {form === 'Jobs' && <><JobForm /></>}
         {form === 'Electronics & Furniture' && <><ElectronicsForm /></>}
         {form === 'Education & Books' && <><EducationForm /></>}
-        {form === 'Local Manufacturers' && <>manufacture form</>}
-        {form === 'PPE & Covid19 essentials services' && <>ppe form</>}
-        {form === 'Property' && <>property form</>}
+        {form === 'Local Manufacturers' && <><ManufucturersForm /></>}
+        {form === 'PPE & Covid19 essentials services' && <><PPEForm /></>}
+        {form === 'Property' && <><PropertyForm /></>}
       </div>
     </div>
   )

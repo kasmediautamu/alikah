@@ -22,10 +22,6 @@ const jobSchema = new mongoose.Schema(
       type: String,
       required: false,
     },
-    websiteLink: {
-      type: String,
-      required: false,
-    },
     companyName: {
       type: String,
       required: false,
@@ -65,7 +61,6 @@ const jobSchema = new mongoose.Schema(
     subscriptionType: {
       type: String,
       required: true,
-      default: 'standard',
     },
     isPaid: {
       type: Boolean,

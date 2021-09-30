@@ -1,22 +1,3 @@
 {
-  "jobType": [
-    "Casual",
-    "Temporary",
-    "Contract",
-    "Part-Time",
-    "Full-Time",
-    "Internship",
-    "Volunteer",
-    "Commission",
-    "Freelance",
-    "Remote-Work"
-  ],
-  "advertisedBy": [
-    "Agency",
-    "Private"
-  ],
-  "employmentEquity": [
-    "EE/AA",
-    "Non EE/AA"
-  ]
+
 }

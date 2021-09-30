@@ -18,6 +18,7 @@ export default async function handler(req:NextApiRequest,res:NextApiResponse) {
       break
     case 'POST':
       try {
+        console.log(req.body)
         const vehicleAd = await Vehicle.create(
           req.body
         ) /* create a new model in the database */

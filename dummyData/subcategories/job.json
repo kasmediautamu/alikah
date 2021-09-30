@@ -22,5 +22,25 @@
       "General Worker Jobs",
       "Government & NGO Jobs",
       "I’m Looking for a Job"
+  ],
+  "jobType": [
+    "Casual",
+    "Temporary",
+    "Contract",
+    "Part-Time",
+    "Full-Time",
+    "Internship",
+    "Volunteer",
+    "Commission",
+    "Freelance",
+    "Remote-Work"
+  ],
+  "advertisedBy": [
+    "Agency",
+    "Private"
+  ],
+  "employmentEquity": [
+    "EE/AA",
+    "Non EE/AA"
   ]
  }

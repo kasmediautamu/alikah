@@ -13,11 +13,6 @@ const educationSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    websiteLink: {
-      type: String,
-      required: false,
-    },
-
     subcategory: {
       type: String,
       required: true,
@@ -49,7 +44,6 @@ const educationSchema = new mongoose.Schema(
     subscriptionType: {
       type: String,
       required: true,
-      default: 'standard',
     },
     isPaid: {
       type: Boolean,

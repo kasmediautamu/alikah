@@ -11,12 +11,11 @@ import DropdownSelect from '../../FormFields/Select'
 import TextField from '../../FormFields/TextField'
 import TextAreaField from '../../FormFields/Textarea'
 // styles
-import s from './Education.module.scss'
-// local data
-
+import s from './Manufucture.module.scss'
+// locah data
 import southafrica from '../../../../dummyData/countries/southafrica.json'
 import sponsorships from '../../../../dummyData/sponsorships.json'
-import education from '../../../../dummyData/subcategories/education.json'
+import manufucturers from '../../../../dummyData/subcategories/manufucturers.json'
 import ValidationMessage from '../../FormFields/Error'
 // redux
 const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
@@ -27,10 +26,10 @@ const initialFormState = {
   saleprice: '',
   province: '',
   city: '',
-  phoneNumber: '',
+  phone: '',
 }
 
-const EducationForm = () => {
+const ManufucturersForm = () => {
   // useEffect(() => {
   //   if (!userInfo._id) {
   //     router.push('/login')
@@ -60,7 +59,7 @@ const EducationForm = () => {
   const [formError, setFormError] = useState(null)
   const [message, setMessage] = useState('')
   /**images array */
-  const educationImages = [url, url1, url2]
+  const manufucturersImages = [url, url1, url2]
   //userId: userInfo ? userInfo._id : null
   const submittedForm = {
     title: formData.title,
@@ -77,7 +76,7 @@ const EducationForm = () => {
     address: {
       province: province,
       city: formData.city,
-      phoneNumber: formData.phoneNumber,
+      phoneNumber: userInfo ? userInfo.phoneNumber : '0700756217',
     },
   }
   // uploads image
@@ -93,7 +92,7 @@ const EducationForm = () => {
       .then((resp) => resp.json())
       .then((data) => {
         setUrl(data.url)
-        console.log(educationImages)
+        console.log(manufucturersImages)
       })
       .catch((err) => console.log(err))
   }
@@ -124,7 +123,7 @@ const EducationForm = () => {
       .then((resp) => resp.json())
       .then((data) => {
         setUrl2(data.url)
-        console.log(educationImages)
+        console.log(manufucturersImages)
       })
       .catch((err) => console.log(err))
   }
@@ -144,13 +143,6 @@ const EducationForm = () => {
       error = {
         field_id: 'description',
         message: 'Advert Description is required',
-      }
-      return error
-    }
-    if (formData.phoneNumber === '') {
-      error = {
-        field_id: 'phoneNumber',
-        message: 'Provide Phone Number To Reach You',
       }
       return error
     }
@@ -198,7 +190,7 @@ const EducationForm = () => {
     }
 
     try {
-      const { data } = await axios.post('/api/education', {
+      const { data } = await axios.post('/api/localmanufucturers', {
         ...submittedForm,
       })
       // console.log(data)
@@ -207,7 +199,7 @@ const EducationForm = () => {
       } else {
         setMessage('Something is Wrong, Please Again')
       }
-      router.push(redirect || '/account')
+       router.push(redirect || '/account')
     } catch (err) {
       // enqueueSnackbar(getError(err), { variant: 'error' });
       console.log(err)
@@ -282,7 +274,7 @@ const EducationForm = () => {
         {/* sub category */}
         {message && <small className={s.postalert}>{message}</small>}
         <DropdownSelect
-          items={education.Education}
+          items={manufucturers.localManufacturers}
           value={subcategory === '' ? 'Select Sub Category*' : subcategory}
           onChange={(value) => {
             setSubCategory(value)
@@ -307,15 +299,6 @@ const EducationForm = () => {
           textareaName="description"
           changefunction={onchange}
           error={formError && formError.field_id === 'description' ? formError.message : ''}
-        />
-
-        <TextField
-          className={s.textField}
-          label="Phone Number*"
-          fieldname={'phoneNumber'}
-          placeholderText={'Enter Phone Number To Reach You'}
-          changefunction={onchange}
-          error={formError && formError.field_id === 'phoneNumber' ? formError.message : ''}
         />
         {/* country, provinces, cities */}
         <div className={s.addressgroup}>
@@ -426,4 +409,4 @@ const EducationForm = () => {
     </div>
   )
 }
-export default EducationForm
+export default ManufucturersForm

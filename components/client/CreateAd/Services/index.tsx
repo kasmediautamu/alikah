@@ -290,6 +290,7 @@ const ServicesForm = () => {
           className={s.textField}
           label="Title*"
           fieldname={'title'}
+          placeholderText={'Enter Advert Title'}
           changefunction={onchange}
           error={formError && formError.field_id === 'title' ? formError.message : ''}
         />

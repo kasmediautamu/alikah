@@ -1,5 +1,8 @@
 @import '../../../../styles//scss/variables.scss';
 .adImages {
+  // margin:auto;
+  // display: flex;
+  // flex-direction: column;
   justify-content: center;
   align-items: center;
   padding-top:15px;
@@ -177,7 +180,4 @@
   font-size: 16px;
   line-height: 20px;
   font-family: 'Inter-Medium';
-}
-.seller {
-  padding: 15px 0;
 }

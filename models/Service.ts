@@ -18,10 +18,6 @@ const serviceSchema = new mongoose.Schema(
       required: true,
       max: 100,
     },
-    websiteLink: {
-      type: String,
-      required: false,
-    },
     description: {
       type: String,
       required: true,
@@ -48,7 +44,6 @@ const serviceSchema = new mongoose.Schema(
     subscriptionType: {
       type: String,
       required: true,
-      default: 'standard',
     },
     isPaid: {
       type: Boolean,

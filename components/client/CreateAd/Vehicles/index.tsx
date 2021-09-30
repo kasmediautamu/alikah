@@ -11,12 +11,11 @@ import DropdownSelect from '../../FormFields/Select'
 import TextField from '../../FormFields/TextField'
 import TextAreaField from '../../FormFields/Textarea'
 // styles
-import s from './Education.module.scss'
+import s from './Vehicles.module.scss'
 // local data
-
 import southafrica from '../../../../dummyData/countries/southafrica.json'
 import sponsorships from '../../../../dummyData/sponsorships.json'
-import education from '../../../../dummyData/subcategories/education.json'
+import vehicles from '../../../../dummyData/subcategories/vehicles.json'
 import ValidationMessage from '../../FormFields/Error'
 // redux
 const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
@@ -28,9 +27,14 @@ const initialFormState = {
   province: '',
   city: '',
   phoneNumber: '',
+  model: '',
+  kilometers: '',
+  engineDisplacement: '',
+  year: '',
+  color: '',
 }
 
-const EducationForm = () => {
+const VehiclesForm = () => {
   // useEffect(() => {
   //   if (!userInfo._id) {
   //     router.push('/login')
@@ -55,17 +59,36 @@ const EducationForm = () => {
   const [subscriptionType, setSubscriptionType] = useState<string>('Standard')
   const [promotionPrice, setPromotionPrice] = useState<Number>(0)
   const [subcategory, setSubCategory] = useState<string>('')
+  const [condition, setCondition] = useState<string>('')
+  const [forsaleBy, setForSaleBy] = useState<string>('')
+  const [make, setMake] = useState<string>('')
+  const [transmission, setTransmission] = useState<string>('')
+  const [bodyType, setBodyType] = useState<string>('')
+  const [fuelType, setFuelType] = useState<string>('')
   const [pricingType, setPricingType] = useState<string>('Amount')
   const [formData, setFormData] = useState(initialFormState)
   const [formError, setFormError] = useState(null)
   const [message, setMessage] = useState('')
   /**images array */
-  const educationImages = [url, url1, url2]
+  const vehicleImages = [url, url1, url2]
   //userId: userInfo ? userInfo._id : null
   const submittedForm = {
     title: formData.title,
     userId: '125',
     subcategory: subcategory,
+    //start
+    condition: condition,
+    forSaleBy: forsaleBy ,
+    make: make ,
+    model: formData.model,
+    transmission: transmission,
+    bodyType: bodyType,
+    year: formData.year,
+    kilometers: formData.kilometers,
+    enginedisplacement: formData.engineDisplacement,
+    colour: formData.color,
+    fuelType: fuelType,
+    //end
     description: formData.description,
     imageURL: [url, url1, url2],
     country: country,
@@ -93,7 +116,7 @@ const EducationForm = () => {
       .then((resp) => resp.json())
       .then((data) => {
         setUrl(data.url)
-        console.log(educationImages)
+        console.log(vehicleImages)
       })
       .catch((err) => console.log(err))
   }
@@ -124,7 +147,7 @@ const EducationForm = () => {
       .then((resp) => resp.json())
       .then((data) => {
         setUrl2(data.url)
-        console.log(educationImages)
+        console.log(vehicleImages)
       })
       .catch((err) => console.log(err))
   }
@@ -198,7 +221,7 @@ const EducationForm = () => {
     }
 
     try {
-      const { data } = await axios.post('/api/education', {
+      const { data } = await axios.post('/api/vehicles', {
         ...submittedForm,
       })
       // console.log(data)
@@ -282,7 +305,7 @@ const EducationForm = () => {
         {/* sub category */}
         {message && <small className={s.postalert}>{message}</small>}
         <DropdownSelect
-          items={education.Education}
+          items={vehicles.vehicles}
           value={subcategory === '' ? 'Select Sub Category*' : subcategory}
           onChange={(value) => {
             setSubCategory(value)
@@ -301,6 +324,133 @@ const EducationForm = () => {
           changefunction={onchange}
           error={formError && formError.field_id === 'title' ? formError.message : ''}
         />
+        <div className={s.fieldgroup}>
+          <div className={s.fields}>
+            <p>Condition</p>
+            <DropdownSelect
+              items={vehicles.condition}
+              value={condition === '' ? 'Select Condition' : condition}
+              onChange={(value: string) => {
+                setCondition(value)
+              }}
+            />
+          </div>
+          <div className={s.fields}>
+            <p>For Sale By</p>
+            <DropdownSelect
+              items={vehicles.forsaleBy}
+              value={forsaleBy === '' ? 'Select Seller' : forsaleBy}
+              onChange={(value: string) => {
+                setForSaleBy(value)
+              }}
+            />
+          </div>
+        </div>
+        {subcategory === 'Auto Parts & Accessories' || subcategory ==='Motorcycle Parts & Accessories' ? (
+          ''
+        ) : (
+          <>
+            <div className={s.fieldgroup}>
+              <div className={s.fields}>
+                <p>Make</p>
+                <DropdownSelect
+                  items={subcategory === 'Motorcycles & Scooters' ?  vehicles.motorsmake :vehicles.make}
+                  value={make === '' ? 'Select Make' : make}
+                  onChange={(value: string) => {
+                    setMake(value)
+                  }}
+                />
+              </div>
+              <div className={s.fields}>
+                <TextField
+                  className={s.textField}
+                  label="Model"
+                  fieldname={'model'}
+                  placeholderText={'Enter model here'}
+                  changefunction={onchange}
+                />
+              </div>
+            </div>
+            <div className={s.fieldgroup}>
+              <div className={s.fields}>
+                <p>Transmission</p>
+                <DropdownSelect
+                  items={vehicles.transmission}
+                  value={transmission === '' ? 'Select Transmission' : transmission}
+                  onChange={(value: string) => {
+                    setTransmission(value)
+                  }}
+                />
+              </div>
+              <div className={s.fields}>
+                <p>Body Type</p>
+                <DropdownSelect
+                  items={vehicles.bodyType}
+                  value={bodyType === '' ? 'Select Body Type' : bodyType}
+                  onChange={(value: string) => {
+                    setBodyType(value)
+                  }}
+                />
+              </div>
+            </div>
+            <div className={s.fieldgroup}>
+              <div className={s.fields}>
+                <TextField
+                  className={s.textField}
+                  label="Year"
+                  fieldname={'year'}
+                  placeholderText={'Enter the year it was made'}
+                  changefunction={onchange}
+                />
+              </div>
+              <div className={s.fields}>
+                <TextField
+                  className={s.textField}
+                  label="Kilometers"
+                  fieldname={'kilometer'}
+                  placeholderText={'Enter kilometers covered'}
+                  changefunction={onchange}
+                />
+              </div>
+              <div className={s.fields}>
+                {subcategory === 'Motorcycles & Scooters' ? (
+                  <TextField
+                    className={s.textField}
+                    label="Engine Displacement (Optional)"
+                    fieldname={'engineDisplacement'}
+                    placeholderText={'Enter Engine Displacement'}
+                    changefunction={onchange}
+                  />
+                ) : (
+                  ''
+                )}
+              </div>
+            </div>
+          </>
+        )}
+
+        <div className={s.fieldgroup}>
+          <div className={s.fields}>
+            <TextField
+              className={s.textField}
+              label="Color"
+              fieldname={'color'}
+              placeholderText={'Enter Color here'}
+              changefunction={onchange}
+            />
+          </div>
+
+          <div className={s.fields}>
+            <p>Fuel Type</p>
+            <DropdownSelect
+              items={vehicles.fuelType}
+              value={fuelType === '' ? 'Select Fuel Type' : fuelType}
+              onChange={(value: string) => {
+                setFuelType(value)
+              }}
+            />
+          </div>
+        </div>
         <TextAreaField
           placeholder={'Description*'}
           label="Description*"
@@ -308,7 +458,6 @@ const EducationForm = () => {
           changefunction={onchange}
           error={formError && formError.field_id === 'description' ? formError.message : ''}
         />
-
         <TextField
           className={s.textField}
           label="Phone Number*"
@@ -317,6 +466,7 @@ const EducationForm = () => {
           changefunction={onchange}
           error={formError && formError.field_id === 'phoneNumber' ? formError.message : ''}
         />
+
         {/* country, provinces, cities */}
         <div className={s.addressgroup}>
           <div className={s.stretchright}>
@@ -426,4 +576,4 @@ const EducationForm = () => {
     </div>
   )
 }
-export default EducationForm
+export default VehiclesForm
