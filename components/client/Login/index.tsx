@@ -12,6 +12,7 @@ import { signIn } from '../../../redux/Actions/auth'
 import Cookies from 'js-cookie'
 import axios from 'axios'
 import GoogleAuth from './GoogleAuth'
+import GAuth from './GAuth'
 
 const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
 const initialFormState = {
@@ -28,12 +29,12 @@ const Auth = () => {
   const userInfo  = useAppSelector((state: any) => state.sign_in.userInfo)
 
 
-  // useEffect(() => {
-  //   if (userInfo) {
-  //     console.log(Cookies.get('userInfo'))
-  //     router.push('/')
-  //   }
-  // }, [])
+  useEffect(() => {
+    if (userInfo) {
+      console.log(Cookies.get('userInfo'))
+      router.push('/')
+    }
+  }, [])
   const submittedForm = {
     email: email,
     password: password,
@@ -115,7 +116,7 @@ const Auth = () => {
                 Continue with gmail
               </Button>
             </Link> */}
-            <GoogleAuth />
+            <GAuth />
           </div>
           <div className={s.registrationLinkBtn}>
             <Link href="/my-account">

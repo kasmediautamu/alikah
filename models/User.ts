@@ -4,8 +4,6 @@ const userSchema = new mongoose.Schema(
     username: {
       type: String,
       require: true,
-      min: 3,
-      max: 20,
       unique: true,
     },
     email: {
@@ -14,10 +12,14 @@ const userSchema = new mongoose.Schema(
       max: 50,
       unique: true,
     },
+    googleId: {
+      type: String,
+      required: false,
+      unique: true,
+    },
     password: {
       type: String,
-      required: true,
-      min: 6,
+      required: false,
     },
     phoneNumber: {
       type: String,

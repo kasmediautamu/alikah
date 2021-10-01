@@ -9,10 +9,13 @@ const handler = nc();
 
 handler.post(async(req:NextApiRequest,res:NextApiResponse) =>{
   await db.dbConnect()
+  const olduser = await User.findOne({ email: req.body.email });
+
   const newUser = new User({
     name:req.body.name,
     email: req.body.email,
     password:bcrypt.hashSync(req.body.password),
+    profilePicture: req.body.profilePicture ? req.body.profilePicture : '',
     isAdmin:false
   })
 

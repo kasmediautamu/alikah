@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import * as React from 'react'
 import { useEffect, useState } from 'react'
 
@@ -10,9 +11,10 @@ declare global {
 const GoogleAuth = () => {
   const [googleAuth, setGoogleAuth] = useState<any>();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [imageUrl, setImageUrl] = useState();
+  const [name, setName] = useState<string>('');
+  const [email, setEmail] = useState<string>('');
+  const [imageUrl, setImageUrl] = useState<string>('');
+
 
   const onFailure = () => {
     setIsLoggedIn(false);
@@ -68,6 +70,7 @@ const onSignOutClick = async()=> {
 }
 return (
   <div>
+
     <button onClick={onSignClick}>sign in with google</button>
     <button onClick={onSignOutClick}>sign out with google</button>
   </div>
