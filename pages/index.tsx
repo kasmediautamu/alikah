@@ -19,6 +19,7 @@ export default function Home({ isConnected }) {
       <Head>
         <title>Alikah Ads</title>
         <link rel="icon" href="/favicon.ico" />
+        {/* <script src="https://apis.google.com/js/api.js"></script> */}
       </Head>
       <main className={s.main}>
         <div className={s.left}>

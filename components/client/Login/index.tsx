@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import * as React from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import TextField from '../FormFields/TextField'
 import CheckBox from '../FormFields/CheckBox'
@@ -10,12 +11,14 @@ import type { RootState, AppDispatch } from '../../../redux/store'
 import { signIn } from '../../../redux/Actions/auth'
 import Cookies from 'js-cookie'
 import axios from 'axios'
+import GoogleAuth from './GoogleAuth'
 
 const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
 const initialFormState = {
   email: '',
   password: '',
 }
+
 const Auth = () => {
   const router = useRouter()
   const { redirect }: any = router.query
@@ -57,6 +60,15 @@ const Auth = () => {
     }
   }
 
+  /**gmail,twitter,facebook login */
+  const gmailLogin = async () => {
+    // clientID:541327257395-0mhksi311563rji6ekbl1pfjq5nec1kr.apps.googleusercontent.com
+    //clientSecret:rO2ux4FNhbAhOLJEU6f-rD9w
+
+  }
+
+
+
   return (
     <>
       <div className={s.auth}>
@@ -94,7 +106,7 @@ const Auth = () => {
             </Link>
           </div>
           <div className={s.registrationLinkBtn}>
-            <Link href="/my-account">
+            {/* <Link href="/my-account">
               <Button
                 onClick={() => {
                   console.log('logged in')
@@ -102,7 +114,8 @@ const Auth = () => {
               >
                 Continue with gmail
               </Button>
-            </Link>
+            </Link> */}
+            <GoogleAuth />
           </div>
           <div className={s.registrationLinkBtn}>
             <Link href="/my-account">

@@ -68,5 +68,9 @@
     "Male",
     "Female",
     "No Preferrance"
+  ],
+  "furnished":[
+    "Yes",
+    "No"
   ]
 }

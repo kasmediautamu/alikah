@@ -5,6 +5,8 @@ import type { RootState, AppDispatch } from '../../../../redux/store'
 import { signIn } from '../../../../redux/Actions/auth'
 import Cookies from 'js-cookie'
 import axios from 'axios'
+import DatePicker from 'react-datepicker'
+
 // components
 import Button from '../../FormFields/Button'
 import DropdownSelect from '../../FormFields/Select'
@@ -28,6 +30,8 @@ const initialFormState = {
   province: '',
   city: '',
   phoneNumber: '',
+  size:'',
+  minimumNights:''
 }
 
 const PropertyForm = () => {
@@ -55,10 +59,25 @@ const PropertyForm = () => {
   const [subscriptionType, setSubscriptionType] = useState<string>('Standard')
   const [promotionPrice, setPromotionPrice] = useState<Number>(0)
   const [subcategory, setSubCategory] = useState<string>('')
+  const [dwellingType, setDwellingType] = useState<string>('')
+  const [forSaleBy, setForSaleBy] = useState<string>('')
+  const [forRentBy, setForRentBy] = useState<string>('')
+  const [sharebasis, setShareBasis] = useState<string>('')
+  const [bedrooms, setBedrooms] = useState<string>('')
+  const [bathrooms, setBathrooms] = useState<string>('')
+  const [smoking, setSmoking] = useState<string>('')
+  const [parking, setParking] = useState<string>('')
+  const [petFriendly, setPetFriendly] = useState<string>('')
+  const [preferedgender, setPreferredGender] = useState<string>('')
+  const [furnished, setFurnished] = useState<string>('')
   const [pricingType, setPricingType] = useState<string>('Amount')
   const [formData, setFormData] = useState(initialFormState)
   const [formError, setFormError] = useState(null)
   const [message, setMessage] = useState('')
+
+  /**date picker */
+  const [startDate, setStartDate] = useState(new Date())
+  const [endDate, setEndDate] = useState(new Date())
   /**images array */
   const propertyImages = [url, url1, url2]
   //userId: userInfo ? userInfo._id : null
@@ -66,21 +85,21 @@ const PropertyForm = () => {
     title: formData.title,
     userId: '125',
     subcategory: subcategory,
-    availableFrom:'',
-    availableTo:'',
-    dwellingType:'',
-    bedRooms:'',
-    shareBasis:'',
-    parking:'',
-    bathrooms:'',
-    size:'',
-    petFriendly:'',
-    smoking:'',
-    prefferedGender:'',
-    furnished:'',
-    minimumNights: '',
-    forRentBy:'',
-    forSaleBy:'',
+    availableFrom: startDate,
+    availableTo: endDate,
+    dwellingType: dwellingType,
+    bedRooms: bedrooms,
+    shareBasis: sharebasis,
+    parking: parking,
+    bathrooms: bathrooms,
+    size: formData.size,
+    petFriendly: petFriendly,
+    smoking: smoking,
+    prefferedGender: preferedgender,
+    furnished: furnished,
+    minimumNights: formData.minimumNights,
+    forRentBy: forRentBy,
+    forSaleBy: forSaleBy,
     description: formData.description,
     imageURL: [url, url1, url2],
     country: country,
@@ -222,7 +241,7 @@ const PropertyForm = () => {
       } else {
         setMessage('Something is Wrong, Please Again')
       }
-       router.push(redirect || '/account')
+      router.push(redirect || '/account')
     } catch (err) {
       // enqueueSnackbar(getError(err), { variant: 'error' });
       console.log(err)
@@ -316,6 +335,162 @@ const PropertyForm = () => {
           changefunction={onchange}
           error={formError && formError.field_id === 'title' ? formError.message : ''}
         />
+        {/* dwelling type */}
+        <div className={s.timelines}>
+          <div className={s.selectfrom}>
+            <p>Dwelling Type</p>
+            <DropdownSelect
+              items={property.dwellingType}
+              value={dwellingType === '' ? 'Select Dwelling Type' : dwellingType}
+              onChange={(value) => {
+                setDwellingType(value)
+              }}
+            />
+          </div>
+        </div>
+        {/* minimum nights */}
+        <TextField
+          className={s.textField}
+          label="Minimun Nights"
+          fieldname={'minimumNights'}
+          placeholderText={'Enter minimum nights'}
+          changefunction={onchange}
+        />
+        {/* seller or renter */}
+        <div className={s.timelines}>
+        <div className={s.selectfrom}>
+            <p>For Sale By:</p>
+            <DropdownSelect
+              items={property.forSaleBy}
+              value={forSaleBy === '' ? 'Select' : forSaleBy}
+              onChange={(value) => {
+                setForSaleBy(value)
+              }}
+            />
+          </div>
+          <div className={s.selectfrom}>
+            <p>For Rent By:</p>
+            <DropdownSelect
+              items={property.forRentBy}
+              value={forRentBy === '' ? 'Select' : forRentBy}
+              onChange={(value) => {
+                setForRentBy(value)
+              }}
+            />
+          </div>
+        </div>
+        {/* prefferd gender */}
+        <div className={s.timelines}>
+        <div className={s.selectfrom}>
+            <p>Preferred Gender:</p>
+            <DropdownSelect
+              items={property.prefferredGender}
+              value={preferedgender === '' ? 'Select Gender' : preferedgender}
+              onChange={(value) => {
+                setPreferredGender(value)
+              }}
+            />
+          </div>
+          <div className={s.selectfrom}>
+            <p>Is it Furnished?</p>
+            <DropdownSelect
+              items={property.furnished}
+              value={furnished === '' ? 'Is it Furnished?' : furnished}
+              onChange={(value) => {
+                setFurnished(value)
+              }}
+            />
+          </div>
+        </div>
+        {/* share basis */}
+        <div className={s.timelines}>
+        <div className={s.selectfrom}>
+            <p>Share Basis:</p>
+            <DropdownSelect
+              items={property.sharebasis}
+              value={sharebasis === '' ? 'Select Share Basis' : sharebasis}
+              onChange={(value) => {
+                setShareBasis(value)
+              }}
+            />
+          </div>
+        </div>
+        {/* rooms */}
+        <div className={s.timelines}>
+        <div className={s.selectfrom}>
+            <p>Number Of Bedrooms</p>
+            <DropdownSelect
+              items={property.bedrooms}
+              value={bedrooms === '' ? 'Select Number Of Bed Rooms' : bedrooms}
+              onChange={(value) => {
+                setBedrooms(value)
+              }}
+            />
+          </div>
+          <div className={s.selectfrom}>
+            <p>Number Of Bathrooms</p>
+            <DropdownSelect
+              items={property.bathrooms}
+              value={bathrooms === '' ? 'Select Number Of Bed Rooms' : bathrooms}
+              onChange={(value) => {
+                setBathrooms(value)
+              }}
+            />
+          </div>
+          <div className={s.selectfrom}>
+            <p>Parking</p>
+            <DropdownSelect
+              items={property.parking}
+              value={parking === '' ? 'Select Parking' : parking}
+              onChange={(value) => {
+                setParking(value)
+              }}
+            />
+          </div>
+        </div>
+        {/* pet friendly, smoking, */}
+        <div className={s.timelines}>
+        <div className={s.selectfrom}>
+            <p>Is it Pet Friendly?</p>
+            <DropdownSelect
+              items={property.petFriendly}
+              value={petFriendly === '' ? 'Is it Pet Friendly?' : petFriendly}
+              onChange={(value) => {
+                setPetFriendly(value)
+              }}
+            />
+          </div>
+          <div className={s.selectfrom}>
+            <p>Do you allow Smoking?</p>
+            <DropdownSelect
+              items={property.smoking}
+              value={smoking === '' ? 'Select here' : smoking}
+              onChange={(value) => {
+                setSmoking(value)
+              }}
+            />
+          </div>
+        </div>
+
+        {/* datepicker */}
+        <div className={s.timelines}>
+          <div className={s.datefields}>
+            <p>Available From</p>
+            <DatePicker
+              className={s.datepicker}
+              selected={startDate}
+              onChange={(date) => setStartDate(date)}
+            />
+          </div>
+          <div className={s.datefields}>
+            <p>Available To</p>
+            <DatePicker
+              className={s.datepicker}
+              selected={endDate}
+              onChange={(date) => setEndDate(date)}
+            />
+          </div>
+        </div>
         <TextAreaField
           placeholder={'Description*'}
           label="Description*"
@@ -323,7 +498,14 @@ const PropertyForm = () => {
           changefunction={onchange}
           error={formError && formError.field_id === 'description' ? formError.message : ''}
         />
-          <TextField
+        <TextField
+          className={s.textField}
+          label="Size(sqm)*"
+          fieldname={'size'}
+          placeholderText={'Enter size of Property'}
+          changefunction={onchange}
+        />
+        <TextField
           className={s.textField}
           label="Phone Number*"
           fieldname={'phoneNumber'}
