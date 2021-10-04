@@ -6,8 +6,8 @@ const HorizontalAd = ({ adverts }) => {
     <div>
       {adverts.length && (
         <div >
-          {adverts.map((item, id) => (
-            <div className={s.Advert} key={item.id} >
+          {adverts.map((item) => (
+            <div className={s.Advert} key={item._id} >
               <div className={s.imageWrapper} >
                 <img src={item.imageURL[0]} alt={item.title} />
               </div>

@@ -12,3 +12,12 @@ export const signOut = () => {
   }
 
 }
+
+export const setNav = (nav) => {
+  return {
+    type: ActionTypes.SET_NAV,
+    payload:nav
+  }
+
+}
+

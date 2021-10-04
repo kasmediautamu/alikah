@@ -1,15 +1,81 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import db from '../lib/mongodb'
 import Ad from '../components/client/Ad'
 import CategoryList from '../components/client/CategoryList'
 import TopCityList from '../components/client/TopCityList'
 import ClientLayout from '../components/client/Layout'
-import AdSlider from '../components/client/Carousel'
-import Slider from '../components/client/Slider'
+import AutoSlider from '../components/client/Carousel'
+import ManualSlider from '../components/client/Slider'
+import PromotedAdSlider from '../components/client/PromotedAdSlder'
 import s from './Home.module.scss'
 import adverts from '../dummyData/adverts.json'
-export default function Home({ isConnected }) {
+import fetchDating from '../lib/fetcher/dating'
+import fetchEducation from '../lib/fetcher/education'
+import fetchFashion from '../lib/fetcher/fashion'
+import fetchManufucturers from '../lib/fetcher/manufucturers'
+import fetchVehicles from '../lib/fetcher/vehicles'
+import fetchJobs from '../lib/fetcher/job'
+import fetchPPE from '../lib/fetcher/ppe'
+import fetchProperty from '../lib/fetcher/property'
+import fetchElectronics from '../lib/fetcher/electronics'
+import fetchServices from '../lib/fetcher/services'
+
+export async function getServerSideProps() {
+  const datingAds = await fetchDating()
+  const educationAds = await fetchEducation()
+  const fashionAds = await fetchFashion()
+  const manufuctureAds = await fetchManufucturers()
+  const vehicleAds = await fetchVehicles()
+  const jobAds = await fetchJobs()
+  const ppeAds = await fetchPPE()
+  const propertyAds = await fetchProperty()
+  const electronicsAds = await fetchElectronics()
+  const servicesAds = await fetchServices()
+
+  return {
+    props: {
+      datingAds,
+      educationAds,
+      fashionAds,
+      manufuctureAds,
+      vehicleAds,
+      jobAds,
+      ppeAds,
+      propertyAds,
+      electronicsAds,
+      servicesAds,
+      revalidate: 24 * 60 * 60, //24 hours
+    },
+  }
+}
+
+export default function Home({
+  datingAds,
+  educationAds,
+  fashionAds,
+  manufuctureAds,
+  vehicleAds,
+  jobAds,
+  ppeAds,
+  propertyAds,
+  electronicsAds,
+  servicesAds,
+}) {
+  // console.log(servicesAds)
+  // console.log(datingAds.data)
+  const spreadAll = [
+    ...servicesAds.data,
+    ...datingAds.data,
+    ...electronicsAds.data,
+    ...propertyAds.data,
+    ...ppeAds.data,
+    ...jobAds.data,
+    ...vehicleAds.data,
+    ...fashionAds.data,
+    ...educationAds.data,
+    ...manufuctureAds.data
+  ]
+  console.log(vehicleAds)
   const sliderAdverts = adverts.map((advert) => {
     return advert
   })
@@ -19,7 +85,9 @@ export default function Home({ isConnected }) {
       <Head>
         <title>Alikah Ads</title>
         <link rel="icon" href="/favicon.ico" />
-        {/* <script src="https://apis.google.com/js/api.js"></script> */}
+        {/* <link rel="stylesheet" type="text/css"  href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" />
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" /> */}
+
       </Head>
       <main className={s.main}>
         <div className={s.left}>
@@ -31,51 +99,21 @@ export default function Home({ isConnected }) {
 
           <div className={s.sliderWrapper}>
             <div className={s.titleRow}>
-            <p className={s.sliderTitle}>Sponsored Ads</p>
-            <Link href={`/sponsored`}><p className={s.viewSponsored}>View all</p></Link>
+              <p className={s.sliderTitle}>Sponsored Ads</p>
+              <Link href={`/sponsored`}>
+                <p className={s.viewSponsored}>View all</p>
+              </Link>
             </div>
+            <AutoSlider sponsoredAds={datingAds.data} />
 
-            <Slider adverts={sliderAdverts}/>
           </div>
           <Link href="/">
             <p className={s.datePosted}>Trending Ads</p>
           </Link>
           <div className={s.givenDate}>
-            <Link href={`/single`}>
-            <div className={s.adContainer}>
-              <Ad />
-            </div>
-            </Link>
-            <Link href={`/single`}>
-            <div className={s.adContainer}>
-              <Ad />
-            </div>
-            </Link>
-
-            <Link href={`/single`}>
-            <div className={s.adContainer}>
-              <Ad />
-            </div>
-            </Link>
-            <Link href={`/single`}>
-            <div className={s.adContainer}>
-              <Ad />
-            </div>
-            </Link>
-            <Link href={`/single`}>
-            <div className={s.adContainer}>
-              <Ad />
-            </div>
-            </Link>
-            <Link href={`/single`}>
-            <div className={s.adContainer}>
-              <Ad />
-            </div>
-            </Link>
+          <ManualSlider adverts={datingAds.data} />
           </div>
           {/* car deals */}
-
-
         </div>
         <div className={s.rightSidebar}>
           <div className={s.happening}>
@@ -89,10 +127,8 @@ export default function Home({ isConnected }) {
             <img src="./images/alikah-brand-ad.png" alt="alikah-brand advert" />
           </div>
           <div className={s.latestAd}>
-            <p className={s.latestTitle}>
-              Checkout the Latest Ads
-            </p>
-          <AdSlider sponsoredAds={sliderAdverts} />
+            <p className={s.latestTitle}>Checkout the Latest Ads</p>
+            <PromotedAdSlider sponsoredAds={datingAds.data} />
           </div>
         </div>
       </main>
@@ -103,18 +139,4 @@ export default function Home({ isConnected }) {
 // Layout
 Home.getLayout = (page) => {
   return <ClientLayout>{page}</ClientLayout>
-}
-
-export async function getServerSideProps() {
-  await db.dbConnect()
-
-  // client.db() will be the default database passed in the MONGODB_URI
-  // You can change the database by calling the client.db() function and specifying a database like:
-  // const db = client.db("myDatabase");
-  // Then you can execute queries against your database like so:
-  // db.find({}) or any of the MongoDB Node Driver commands
-
-  return {
-    props: {},
-  }
 }

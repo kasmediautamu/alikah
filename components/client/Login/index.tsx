@@ -31,8 +31,9 @@ const Auth = () => {
 
   useEffect(() => {
     if (userInfo) {
-      console.log(Cookies.get('userInfo'))
-      router.push('/')
+      console.log(userInfo.isAdmin)
+      // router.push('/')
+      // console.log(Cookies.get('userInfo'))
     }
   }, [])
   const submittedForm = {
@@ -116,7 +117,7 @@ const Auth = () => {
                 Continue with gmail
               </Button>
             </Link> */}
-            <GAuth />
+            {/* <GAuth /> */}
           </div>
           <div className={s.registrationLinkBtn}>
             <Link href="/my-account">

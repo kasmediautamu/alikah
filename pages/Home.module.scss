@@ -6,17 +6,16 @@
 }
 .left {
     flex-basis:20%;
-    background-color: white;
-    border-radius: 6px;
-    height: max-content;
+    margin-right:20px;
 }
 .right{
     display:flex;
     flex-direction: column;
-    flex-basis:65%;
+    flex-basis:60%;
+    align-items: center;
 }
 .rightSidebar{
-  flex-basis:18%;
+  flex-basis:12%;
 }
 .givenDate {
     display:flex;
@@ -41,8 +40,7 @@
     padding-bottom: 10px;
 }
 .sliderWrapper{
-position: relative;
-min-height: 55vh;
+
 }
 .sliderTitle{
   color:$blue-2;
@@ -78,13 +76,13 @@ min-height: 55vh;
   font-size: 13px;
   line-height:20px;
 }
-.titleRow {
-  display:flex;
-  flex-direction: row;
-  justify-content: space-between;
-  flex-wrap: nowrap;
-  padding:0 25px 0 10px;
-}
+// .titleRow {
+//   display:flex;
+//   flex-direction: row;
+//   justify-content: space-between;
+//   flex-wrap: nowrap;
+//   padding:0 25px 0 10px;
+// }
 .viewSponsored {
   color:$blue-2;
   cursor: pointer;

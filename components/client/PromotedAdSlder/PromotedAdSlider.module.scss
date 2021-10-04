@@ -7,13 +7,12 @@
   }
 }
 .title {
-color:$brown-1;
-font-family: 'Inter-Medium';
-font-size: 13px;
-line-height: 15px;
+color:$blue-2;
+font-family: 'Inter-Regular';
+font-size: 15px;
+line-height: 18px;
 text-align:left;
 padding-left: 10px;
-text-transform: uppercase;
 }
 .price {
 color:$blue-2;
@@ -35,9 +34,11 @@ padding-left: 10px;
 .city {
   color:$blue-2;
   font-family: 'Inter-Light';
-  font-size: 10px;
+  font-size: 14px;
   line-height: 18px;
   text-align:left;
+  padding-left: 10px;
+  padding-bottom: 10px;
 }
 .priceTitle {
   display:flex;
@@ -46,21 +47,10 @@ padding-left: 10px;
   padding-top: 10px;
   flex-wrap: wrap;
 }
-.province{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  font-size: 10px;
-}
 .location {
-  display: flex;
+  display:flex;
   flex-direction: row;
-  align-items: center;
-}
-.slide {
-  background-color: $white;
-  padding-bottom: 10px;
-  cursor: pointer;
+  padding-top: 10px;
 }
 
 @media (min-width:768px){

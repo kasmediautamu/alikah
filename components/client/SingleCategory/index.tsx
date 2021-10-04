@@ -5,18 +5,12 @@ import Link from 'next/link'
 import Slider from '../../client/Slider'
 import adverts from '../../../dummyData/adverts.json'
 import LeftSideNav from './LeftSideNav'
-const SingleCategory = () => {
-  const sliderAdverts = adverts.map((advert) => {
-    return advert
-  })
-  const Adverts = adverts.map((advert) => {
-    return advert
-  })
+const SingleCategory = ({Adverts}:any) => {
+
   return (
     <>
     <div className={s.title}>Sponsored Ads</div>
     <div className={s.sliderWrapper}>
-      <Slider adverts={sliderAdverts}/>
     </div>
     <div className={s.singlecatPage}>
       <div className={s.left}>

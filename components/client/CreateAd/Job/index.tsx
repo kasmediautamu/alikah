@@ -62,6 +62,7 @@ const JobForm = () => {
   const [formData, setFormData] = useState(initialFormState)
   const [formError, setFormError] = useState(null)
   const [message, setMessage] = useState('')
+  const [saleprice, setSalePrice] = useState<string>('')
   /**images array */
   const jobImages = [url, url1, url2]
   //userId: userInfo ? userInfo._id : null
@@ -76,7 +77,7 @@ const JobForm = () => {
     description: formData.description,
     imageURL: [url, url1, url2],
     country: country,
-    price: pricingType === 'Amount' ? formData.saleprice : pricingType,
+    price: pricingType === 'Amount' ? saleprice : pricingType,
     subscriptionType: subscriptionType,
     isPaid: promotionPrice > 0 ? true : false,
     subscriptionPrice: promotionPrice,
@@ -205,7 +206,7 @@ const JobForm = () => {
     }
 
     try {
-      const { data } = await axios.post('/api/job', {
+      const { data } = await axios.post('/api/jobs', {
         ...submittedForm,
       })
       // console.log(data)
@@ -223,6 +224,9 @@ const JobForm = () => {
   const onchange = (e) => {
     let target = e.target
     setFormData({ ...formData, [target.name]: target.value })
+  }
+  const saleprice$ = (e) => {
+    setSalePrice(e.target.value)
   }
   return (
     <div>
@@ -285,10 +289,7 @@ const JobForm = () => {
           )}
         </div>
       </div>
-      <form onSubmit={onsubmit}>
-        {/* sub category */}
-        {message && <small className={s.postalert}>{message}</small>}
-        <DropdownSelect
+      <DropdownSelect
           items={job.jobs}
           value={subcategory === '' ? 'Select Sub Category*' : subcategory}
           onChange={(value) => {
@@ -300,14 +301,6 @@ const JobForm = () => {
         ) : (
           ''
         )}
-        <TextField
-          className={s.textField}
-          label="Title*"
-          fieldname={'title'}
-          placeholderText={'Enter Advert Title'}
-          changefunction={onchange}
-          error={formError && formError.field_id === 'title' ? formError.message : ''}
-        />
         <div className={s.selection}>
           <p className={s.selectiontitle}>
             Job Type
@@ -337,14 +330,7 @@ const JobForm = () => {
         </div>
 
         </div>
-        <TextField
-          className={s.textField}
-          label="Company Name"
-          fieldname={'companyName'}
-          placeholderText={'Enter Company Name'}
-          changefunction={onchange}
-        />
-         <div className={s.selection}>
+        <div className={s.selection}>
           <p className={s.selectiontitle}>
             Employment Equity
           </p>
@@ -358,23 +344,8 @@ const JobForm = () => {
         />
         </div>
         </div>
-        <TextAreaField
-          placeholder={'Description*'}
-          label="Description*"
-          textareaName="description"
-          changefunction={onchange}
-          error={formError && formError.field_id === 'description' ? formError.message : ''}
-        />
-        <TextField
-          className={s.textField}
-          label="Phone Number*"
-          fieldname={'phoneNumber'}
-          placeholderText={'Enter Phone Number To Reach You'}
-          changefunction={onchange}
-          error={formError && formError.field_id === 'phoneNumber' ? formError.message : ''}
-        />
-        {/* country, provinces, cities */}
-        <div className={s.addressgroup}>
+ {/* country, provinces, cities */}
+ <div className={s.addressgroup}>
           <div className={s.stretchright}>
             <p>Country</p>
             <DropdownSelect
@@ -401,16 +372,6 @@ const JobForm = () => {
             ''
           )}
         </div>
-        <div className={s.citygroup}>
-          <TextField
-            className={s.textField}
-            label="City*"
-            fieldname={'city'}
-            placeholderText={`Enter Your City Here`}
-            changefunction={onchange}
-            error={formError && formError.field_id === 'city' ? formError.message : ''}
-          />
-        </div>
         <div className={s.pricing}>
           <p className={s.heading}>Price</p>
           <DropdownSelect
@@ -429,7 +390,7 @@ const JobForm = () => {
               label="Price(R)*"
               fieldname={'saleprice'}
               placeholderText={'Enter Your Price'}
-              changefunction={onchange}
+              changefunction={saleprice$}
               error={formError && formError.field_id === 'saleprice' ? formError.message : ''}
             />
           ) : (
@@ -439,7 +400,53 @@ const JobForm = () => {
             </>
           )}
         </div>
-        <div className={s.step2Form}>
+
+      <form onSubmit={onsubmit}>
+        {/* sub category */}
+        {message && <small className={s.postalert}>{message}</small>}
+
+        <TextField
+          className={s.textField}
+          label="Title*"
+          fieldname={'title'}
+          placeholderText={'Enter Advert Title'}
+          changefunction={onchange}
+          error={formError && formError.field_id === 'title' ? formError.message : ''}
+        />
+        <TextField
+          className={s.textField}
+          label="Company Name"
+          fieldname={'companyName'}
+          placeholderText={'Enter Company Name'}
+          changefunction={onchange}
+        />
+        <TextAreaField
+          placeholder={'Description*'}
+          label="Description*"
+          textareaName="description"
+          changefunction={onchange}
+          error={formError && formError.field_id === 'description' ? formError.message : ''}
+        />
+        <TextField
+          className={s.textField}
+          label="Phone Number*"
+          fieldname={'phoneNumber'}
+          placeholderText={'Enter Phone Number To Reach You'}
+          changefunction={onchange}
+          error={formError && formError.field_id === 'phoneNumber' ? formError.message : ''}
+        />
+
+        <div className={s.citygroup}>
+          <TextField
+            className={s.textField}
+            label="City*"
+            fieldname={'city'}
+            placeholderText={`Enter Your City Here`}
+            changefunction={onchange}
+            error={formError && formError.field_id === 'city' ? formError.message : ''}
+          />
+        </div>
+          <div className={s.step2Form}>
           <div className={s.monetization}>
             <div className={s.titleMonetization}>
               <p>To Promote your ad, choose one of the following packages</p>

@@ -6,6 +6,8 @@ import { NextPage } from 'next'
 import { Provider } from 'react-redux'
 import { useStore } from '../redux/store'
 import { SnackbarProvider } from 'notistack'
+import Nav from '../components/client/Nav'
+import Category from '../components/client/PopularCategories'
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode
 }
@@ -22,6 +24,8 @@ const MyApp = ({ Component, pageProps }: AppPropsWithLayout) => {
   return getLayout(
     <SnackbarProvider anchorOrigin={{ vertical: 'top', horizontal: 'center' }}>
       <Provider store={store}>
+        <Nav />
+        <Category />
         <Component {...pageProps} />
       </Provider>
     </SnackbarProvider>

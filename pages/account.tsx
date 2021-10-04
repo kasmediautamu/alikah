@@ -8,11 +8,11 @@ const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
 const UserAccount = () => {
   const router = useRouter()
   const { userInfo } = useAppSelector((state: any) => state.sign_in)
-  console.log(userInfo)
+  // console.log(userInfo)
   useEffect(()=>{
-    if(!userInfo){
-      router.push('/login')
-    }
+    // if(!userInfo){
+    //   router.push('/login')
+    // }
   }, [])
     return (
         <div><Profile /></div>

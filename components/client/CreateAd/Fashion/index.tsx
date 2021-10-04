@@ -27,7 +27,7 @@ const initialFormState = {
   saleprice: '',
   province: '',
   city: '',
-  phoneNumber:''
+  phoneNumber: '',
 }
 
 const FashionForm = () => {
@@ -59,6 +59,7 @@ const FashionForm = () => {
   const [formData, setFormData] = useState(initialFormState)
   const [formError, setFormError] = useState(null)
   const [message, setMessage] = useState('')
+  const [saleprice, setSalePrice] = useState<string>('')
   /**images array */
   const fashionImages = [url, url1, url2]
   //userId: userInfo ? userInfo._id : null
@@ -69,7 +70,7 @@ const FashionForm = () => {
     description: formData.description,
     imageURL: [url, url1, url2],
     country: country,
-    price: pricingType === 'Amount' ? formData.saleprice : pricingType,
+    price: pricingType === 'Amount' ? saleprice : pricingType,
     subscriptionType: subscriptionType,
     isPaid: promotionPrice > 0 ? true : false,
     subscriptionPrice: promotionPrice,
@@ -207,7 +208,7 @@ const FashionForm = () => {
       } else {
         setMessage('Something is Wrong, Please Again')
       }
-       router.push(redirect || '/account')
+      router.push(redirect || '/account')
     } catch (err) {
       // enqueueSnackbar(getError(err), { variant: 'error' });
       console.log(err)
@@ -216,6 +217,9 @@ const FashionForm = () => {
   const onchange = (e) => {
     let target = e.target
     setFormData({ ...formData, [target.name]: target.value })
+  }
+  const saleprice$ = (e) => {
+    setSalePrice(e.target.value)
   }
   return (
     <div>
@@ -278,21 +282,78 @@ const FashionForm = () => {
           )}
         </div>
       </div>
-      <form onSubmit={onsubmit}>
-        {/* sub category */}
-        {message && <small className={s.postalert}>{message}</small>}
-        <DropdownSelect
-          items={fashion.fashion}
-          value={subcategory === '' ? 'Select Sub Category*' : subcategory}
-          onChange={(value) => {
-            setSubCategory(value)
-          }}
-        />
-        {formError && formError.field_id === 'subcategory' ? (
+      <DropdownSelect
+        items={fashion.fashion}
+        value={subcategory === '' ? 'Select Sub Category*' : subcategory}
+        onChange={(value) => {
+          setSubCategory(value)
+        }}
+      />
+      {formError && formError.field_id === 'subcategory' ? (
+        <ValidationMessage>{formError.message}</ValidationMessage>
+      ) : (
+        ''
+      )}
+      {/* country, provinces, cities */}
+      <div className={s.addressgroup}>
+        <div className={s.stretchright}>
+          <p>Country</p>
+          <DropdownSelect
+            items={['South Africa', 'Swaziland', 'Namibia', 'Zimbabwe', 'Malawi', 'Botswana']}
+            value={country === '' ? 'Select Country' : country}
+            onChange={(value: string) => {
+              setCountry(value)
+            }}
+          />
+        </div>
+        <div className={s.stretchright}>
+          <p>Province</p>
+          <DropdownSelect
+            items={southafrica.Provinces}
+            value={province === '' ? 'Select Province' : province}
+            onChange={(value: string) => {
+              setProvince(value)
+            }}
+          />
+        </div>
+        {formError && formError.field_id === 'province' ? (
           <ValidationMessage>{formError.message}</ValidationMessage>
         ) : (
           ''
         )}
+      </div>
+      <div className={s.pricing}>
+        <p className={s.heading}>Price</p>
+        <DropdownSelect
+          items={['Amount', 'Negotiable', 'Free', 'Swap/Trade']}
+          value={pricingType === '' ? 'Amount' : pricingType}
+          onChange={(value) => {
+            setPricingType(value)
+          }}
+          /*
+           * render a city select depending on region chosen
+           */
+        />
+        {pricingType === 'Amount' ? (
+          <TextField
+            className={s.textField}
+            label="Price(R)*"
+            fieldname={'saleprice'}
+            placeholderText={'Enter Your Price'}
+            changefunction={saleprice$}
+            error={formError && formError.field_id === 'saleprice' ? formError.message : ''}
+          />
+        ) : (
+          <>
+            <p className={s.selectedPricing}>{pricingType}</p>
+            <img src="./icons/list-check.svg" />
+          </>
+        )}
+      </div>
+      <form onSubmit={onsubmit}>
+        {/* sub category */}
+        {message && <small className={s.postalert}>{message}</small>}
+
         <TextField
           className={s.textField}
           label="Title*"
@@ -308,7 +369,7 @@ const FashionForm = () => {
           changefunction={onchange}
           error={formError && formError.field_id === 'description' ? formError.message : ''}
         />
-         <TextField
+        <TextField
           className={s.textField}
           label="Phone Number*"
           fieldname={'phoneNumber'}
@@ -316,34 +377,7 @@ const FashionForm = () => {
           changefunction={onchange}
           error={formError && formError.field_id === 'phoneNumber' ? formError.message : ''}
         />
-        {/* country, provinces, cities */}
-        <div className={s.addressgroup}>
-          <div className={s.stretchright}>
-            <p>Country</p>
-            <DropdownSelect
-              items={['South Africa', 'Swaziland', 'Namibia', 'Zimbabwe', 'Malawi', 'Botswana']}
-              value={country === '' ? 'Select Country' : country}
-              onChange={(value: string) => {
-                setCountry(value)
-              }}
-            />
-          </div>
-          <div className={s.stretchright}>
-            <p>Province</p>
-            <DropdownSelect
-              items={southafrica.Provinces}
-              value={province === '' ? 'Select Province' : province}
-              onChange={(value: string) => {
-                setProvince(value)
-              }}
-            />
-          </div>
-          {formError && formError.field_id === 'province' ? (
-            <ValidationMessage>{formError.message}</ValidationMessage>
-          ) : (
-            ''
-          )}
-        </div>
+
         <div className={s.citygroup}>
           <TextField
             className={s.textField}
@@ -354,34 +388,7 @@ const FashionForm = () => {
             error={formError && formError.field_id === 'city' ? formError.message : ''}
           />
         </div>
-        <div className={s.pricing}>
-          <p className={s.heading}>Price</p>
-          <DropdownSelect
-            items={['Amount', 'Negotiable', 'Free', 'Swap/Trade']}
-            value={pricingType === '' ? 'Amount' : pricingType}
-            onChange={(value) => {
-              setPricingType(value)
-            }}
-            /*
-             * render a city select depending on region chosen
-             */
-          />
-          {pricingType === 'Amount' ? (
-            <TextField
-              className={s.textField}
-              label="Price(R)*"
-              fieldname={'saleprice'}
-              placeholderText={'Enter Your Price'}
-              changefunction={onchange}
-              error={formError && formError.field_id === 'saleprice' ? formError.message : ''}
-            />
-          ) : (
-            <>
-              <p className={s.selectedPricing}>{pricingType}</p>
-              <img src="./icons/list-check.svg" />
-            </>
-          )}
-        </div>
+
         <div className={s.step2Form}>
           <div className={s.monetization}>
             <div className={s.titleMonetization}>

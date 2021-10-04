@@ -10,8 +10,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@material-ui/core": "^4.12.3",
-    "@material-ui/icons": "^4.11.2",
     "@types/gapi": "^0.0.41",
     "@types/gapi.auth2": "^0.0.55",
     "@types/jsonwebtoken": "^8.5.5",
@@ -38,12 +36,13 @@
     "react-datepicker": "^4.2.1",
     "react-dom": "^17.0.2",
     "react-hook-form": "^7.15.3",
-    "react-material-ui-carousel": "^2.3.1",
     "react-redux": "^7.2.5",
+    "react-slick": "^0.28.1",
     "redux": "^4.1.1",
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.3.0",
     "sass": "^1.38.1",
+    "slick-carousel": "^1.8.1",
     "streamifier": "^0.1.1",
     "swr": "^1.0.0",
     "validator": "^13.6.0"

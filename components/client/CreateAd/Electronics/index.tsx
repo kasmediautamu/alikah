@@ -61,6 +61,7 @@ const ElectronicsForm = () => {
   const [formData, setFormData] = useState(initialFormState)
   const [formError, setFormError] = useState(null)
   const [message, setMessage] = useState('')
+  const [saleprice, setSalePrice] = useState<string>('')
   /**images array */
   const electronicsImages = [url, url1, url2]
   //userId: userInfo ? userInfo._id : null
@@ -71,7 +72,7 @@ const ElectronicsForm = () => {
     description: formData.description,
     imageURL: [url, url1, url2],
     country: country,
-    price: pricingType === 'Amount' ? formData.saleprice : pricingType,
+    price: pricingType === 'Amount' ? saleprice : pricingType,
     subscriptionType: subscriptionType,
     isPaid: promotionPrice > 0 ? true : false,
     subscriptionPrice: promotionPrice,
@@ -219,6 +220,10 @@ const ElectronicsForm = () => {
     let target = e.target
     setFormData({ ...formData, [target.name]: target.value })
   }
+  const saleprice$ = (e) => {
+
+    setSalePrice(e.target.value)
+  }
   return (
     <div>
       <div className={s.adImages}>
@@ -280,10 +285,7 @@ const ElectronicsForm = () => {
           )}
         </div>
       </div>
-      <form onSubmit={onsubmit}>
-        {/* sub category */}
-        {message && <small className={s.postalert}>{message}</small>}
-        <DropdownSelect
+      <DropdownSelect
           items={electronics.electronics}
           value={subcategory === '' ? 'Select Sub Category*' : subcategory}
           onChange={(value) => {
@@ -295,14 +297,6 @@ const ElectronicsForm = () => {
         ) : (
           ''
         )}
-        <TextField
-          className={s.textField}
-          label="Title*"
-          fieldname={'title'}
-          placeholderText={'Enter Advert Title'}
-          changefunction={onchange}
-          error={formError && formError.field_id === 'title' ? formError.message : ''}
-        />
         <div className={s.seller}>
         <DropdownSelect
               items={electronics.forSaleBy}
@@ -321,23 +315,8 @@ const ElectronicsForm = () => {
               }}
             />
 
-        <TextAreaField
-          placeholder={'Description*'}
-          label="Description*"
-          textareaName="description"
-          changefunction={onchange}
-          error={formError && formError.field_id === 'description' ? formError.message : ''}
-        />
-        <TextField
-          className={s.textField}
-          label="Phone Number*"
-          fieldname={'phoneNumber'}
-          placeholderText={'Enter Phone Number To Reach You'}
-          changefunction={onchange}
-          error={formError && formError.field_id === 'phoneNumber' ? formError.message : ''}
-        />
-        {/* country, provinces, cities */}
-        <div className={s.addressgroup}>
+       {/* country, provinces, cities */}
+       <div className={s.addressgroup}>
           <div className={s.stretchright}>
             <p>Country</p>
             <DropdownSelect
@@ -364,16 +343,6 @@ const ElectronicsForm = () => {
             ''
           )}
         </div>
-        <div className={s.citygroup}>
-          <TextField
-            className={s.textField}
-            label="City*"
-            fieldname={'city'}
-            placeholderText={`Enter Your City Here`}
-            changefunction={onchange}
-            error={formError && formError.field_id === 'city' ? formError.message : ''}
-          />
-        </div>
         <div className={s.pricing}>
           <p className={s.heading}>Price</p>
           <DropdownSelect
@@ -392,7 +361,7 @@ const ElectronicsForm = () => {
               label="Price(R)*"
               fieldname={'saleprice'}
               placeholderText={'Enter Your Price'}
-              changefunction={onchange}
+              changefunction={saleprice$}
               error={formError && formError.field_id === 'saleprice' ? formError.message : ''}
             />
           ) : (
@@ -402,6 +371,46 @@ const ElectronicsForm = () => {
             </>
           )}
         </div>
+      <form onSubmit={onsubmit}>
+        {/* sub category */}
+        {message && <small className={s.postalert}>{message}</small>}
+
+        <TextField
+          className={s.textField}
+          label="Title*"
+          fieldname={'title'}
+          placeholderText={'Enter Advert Title'}
+          changefunction={onchange}
+          error={formError && formError.field_id === 'title' ? formError.message : ''}
+        />
+
+        <TextAreaField
+          placeholder={'Description*'}
+          label="Description*"
+          textareaName="description"
+          changefunction={onchange}
+          error={formError && formError.field_id === 'description' ? formError.message : ''}
+        />
+        <TextField
+          className={s.textField}
+          label="Phone Number*"
+          fieldname={'phoneNumber'}
+          placeholderText={'Enter Phone Number To Reach You'}
+          changefunction={onchange}
+          error={formError && formError.field_id === 'phoneNumber' ? formError.message : ''}
+        />
+
+        <div className={s.citygroup}>
+          <TextField
+            className={s.textField}
+            label="City*"
+            fieldname={'city'}
+            placeholderText={`Enter Your City Here`}
+            changefunction={onchange}
+            error={formError && formError.field_id === 'city' ? formError.message : ''}
+          />
+        </div>
+
         <div className={s.step2Form}>
           <div className={s.monetization}>
             <div className={s.titleMonetization}>

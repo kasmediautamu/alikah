@@ -6,8 +6,6 @@ import Category from '../PopularCategories'
 const ClientLayout = ({ children }) => {
 return (
     <div className={s.LayoutWrapper}>
-        <Nav />
-        <Category />
         <div>
             {children}
         </div>

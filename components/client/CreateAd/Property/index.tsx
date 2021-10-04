@@ -74,7 +74,7 @@ const PropertyForm = () => {
   const [formData, setFormData] = useState(initialFormState)
   const [formError, setFormError] = useState(null)
   const [message, setMessage] = useState('')
-
+  const [saleprice, setSalePrice] = useState<string>('')
   /**date picker */
   const [startDate, setStartDate] = useState(new Date())
   const [endDate, setEndDate] = useState(new Date())
@@ -103,7 +103,7 @@ const PropertyForm = () => {
     description: formData.description,
     imageURL: [url, url1, url2],
     country: country,
-    price: pricingType === 'Amount' ? formData.saleprice : pricingType,
+    price: pricingType === 'Amount' ? saleprice : pricingType,
     subscriptionType: subscriptionType,
     isPaid: promotionPrice > 0 ? true : false,
     subscriptionPrice: promotionPrice,
@@ -251,6 +251,9 @@ const PropertyForm = () => {
     let target = e.target
     setFormData({ ...formData, [target.name]: target.value })
   }
+  const saleprice$ = (e) => {
+    setSalePrice(e.target.value)
+  }
   return (
     <div>
       <div className={s.adImages}>
@@ -312,10 +315,7 @@ const PropertyForm = () => {
           )}
         </div>
       </div>
-      <form onSubmit={onsubmit}>
-        {/* sub category */}
-        {message && <small className={s.postalert}>{message}</small>}
-        <DropdownSelect
+      <DropdownSelect
           items={property.property}
           value={subcategory === '' ? 'Select Sub Category*' : subcategory}
           onChange={(value) => {
@@ -402,19 +402,6 @@ const PropertyForm = () => {
             />
           </div>
         </div>
-        {/* share basis */}
-        <div className={s.timelines}>
-        <div className={s.selectfrom}>
-            <p>Share Basis:</p>
-            <DropdownSelect
-              items={property.sharebasis}
-              value={sharebasis === '' ? 'Select Share Basis' : sharebasis}
-              onChange={(value) => {
-                setShareBasis(value)
-              }}
-            />
-          </div>
-        </div>
         {/* rooms */}
         <div className={s.timelines}>
         <div className={s.selectfrom}>
@@ -471,7 +458,78 @@ const PropertyForm = () => {
             />
           </div>
         </div>
-
+       {/* share basis */}
+       <div className={s.timelines}>
+        <div className={s.selectfrom}>
+            <p>Share Basis:</p>
+            <DropdownSelect
+              items={property.sharebasis}
+              value={sharebasis === '' ? 'Select Share Basis' : sharebasis}
+              onChange={(value) => {
+                setShareBasis(value)
+              }}
+            />
+          </div>
+        </div>
+      {/* country, provinces, cities */}
+      <div className={s.addressgroup}>
+          <div className={s.stretchright}>
+            <p>Country</p>
+            <DropdownSelect
+              items={['South Africa', 'Swaziland', 'Namibia', 'Zimbabwe', 'Malawi', 'Botswana']}
+              value={country === '' ? 'Select Country' : country}
+              onChange={(value: string) => {
+                setCountry(value)
+              }}
+            />
+          </div>
+          <div className={s.stretchright}>
+            <p>Province</p>
+            <DropdownSelect
+              items={southafrica.Provinces}
+              value={province === '' ? 'Select Province' : province}
+              onChange={(value: string) => {
+                setProvince(value)
+              }}
+            />
+          </div>
+          {formError && formError.field_id === 'province' ? (
+            <ValidationMessage>{formError.message}</ValidationMessage>
+          ) : (
+            ''
+          )}
+        </div>
+        <div className={s.pricing}>
+          <p className={s.heading}>Price</p>
+          <DropdownSelect
+            items={['Amount', 'Negotiable', 'Free', 'Swap/Trade']}
+            value={pricingType === '' ? 'Amount' : pricingType}
+            onChange={(value) => {
+              setPricingType(value)
+            }}
+            /*
+             * render a city select depending on region chosen
+             */
+          />
+          {pricingType === 'Amount' ? (
+            <TextField
+              className={s.textField}
+              label="Price(R)*"
+              fieldname={'saleprice'}
+              placeholderText={'Enter Your Price'}
+              changefunction={saleprice$}
+              error={formError && formError.field_id === 'saleprice' ? formError.message : ''}
+            />
+          ) : (
+            <>
+              <p className={s.selectedPricing}>{pricingType}</p>
+              <img src="./icons/list-check.svg" />
+            </>
+          )}
+        </div>
+      <form onSubmit={onsubmit}>
+        {/* sub category */}
+        {message && <small className={s.postalert}>{message}</small>}
         {/* datepicker */}
         <div className={s.timelines}>
           <div className={s.datefields}>
@@ -514,34 +572,7 @@ const PropertyForm = () => {
           error={formError && formError.field_id === 'phoneNumber' ? formError.message : ''}
         />
 
-        {/* country, provinces, cities */}
-        <div className={s.addressgroup}>
-          <div className={s.stretchright}>
-            <p>Country</p>
-            <DropdownSelect
-              items={['South Africa', 'Swaziland', 'Namibia', 'Zimbabwe', 'Malawi', 'Botswana']}
-              value={country === '' ? 'Select Country' : country}
-              onChange={(value: string) => {
-                setCountry(value)
-              }}
-            />
-          </div>
-          <div className={s.stretchright}>
-            <p>Province</p>
-            <DropdownSelect
-              items={southafrica.Provinces}
-              value={province === '' ? 'Select Province' : province}
-              onChange={(value: string) => {
-                setProvince(value)
-              }}
-            />
-          </div>
-          {formError && formError.field_id === 'province' ? (
-            <ValidationMessage>{formError.message}</ValidationMessage>
-          ) : (
-            ''
-          )}
-        </div>
+
         <div className={s.citygroup}>
           <TextField
             className={s.textField}
@@ -552,34 +583,7 @@ const PropertyForm = () => {
             error={formError && formError.field_id === 'city' ? formError.message : ''}
           />
         </div>
-        <div className={s.pricing}>
-          <p className={s.heading}>Price</p>
-          <DropdownSelect
-            items={['Amount', 'Negotiable', 'Free', 'Swap/Trade']}
-            value={pricingType === '' ? 'Amount' : pricingType}
-            onChange={(value) => {
-              setPricingType(value)
-            }}
-            /*
-             * render a city select depending on region chosen
-             */
-          />
-          {pricingType === 'Amount' ? (
-            <TextField
-              className={s.textField}
-              label="Price(R)*"
-              fieldname={'saleprice'}
-              placeholderText={'Enter Your Price'}
-              changefunction={onchange}
-              error={formError && formError.field_id === 'saleprice' ? formError.message : ''}
-            />
-          ) : (
-            <>
-              <p className={s.selectedPricing}>{pricingType}</p>
-              <img src="./icons/list-check.svg" />
-            </>
-          )}
-        </div>
+
         <div className={s.step2Form}>
           <div className={s.monetization}>
             <div className={s.titleMonetization}>

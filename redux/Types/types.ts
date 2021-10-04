@@ -6,5 +6,6 @@ export const RESET = 'RESET'
 
 export const ActionTypes = {
   SIGN_IN:'SIGN_IN',
-  SIGN_OUT:'SIGN_OUT'
+  SIGN_OUT:'SIGN_OUT',
+  SET_NAV:'SET_NAV'
 }

@@ -53,3 +53,25 @@ padding-left: 10px;
   flex-direction: row;
   padding-top: 10px;
 }
+
+@media (min-width:768px){
+  .container {
+    padding: 0px;
+    background: $blue-1;
+    max-width: 700px;
+  }
+}
+@media (min-width:576px){
+  .container {
+    padding: 0px;
+    background: $blue-1;
+    // background: $white;
+  }
+}
+@media (min-width:992px){
+  .container {
+    padding: 0px;
+    background: $blue-1;
+    // background: $white;
+  }
+}

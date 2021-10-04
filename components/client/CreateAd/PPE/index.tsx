@@ -27,7 +27,7 @@ const initialFormState = {
   saleprice: '',
   province: '',
   city: '',
-  phone: '',
+  phoneNumber: '',
 }
 
 const PPEForm = () => {
@@ -59,6 +59,7 @@ const PPEForm = () => {
   const [formData, setFormData] = useState(initialFormState)
   const [formError, setFormError] = useState(null)
   const [message, setMessage] = useState('')
+  const [saleprice, setSalePrice] = useState<string>('')
   /**images array */
   const ppeImages = [url, url1, url2]
   //userId: userInfo ? userInfo._id : null
@@ -69,7 +70,7 @@ const PPEForm = () => {
     description: formData.description,
     imageURL: [url, url1, url2],
     country: country,
-    price: pricingType === 'Amount' ? formData.saleprice : pricingType,
+    price: pricingType === 'Amount' ? saleprice : pricingType,
     subscriptionType: subscriptionType,
     isPaid: promotionPrice > 0 ? true : false,
     subscriptionPrice: promotionPrice,
@@ -77,7 +78,7 @@ const PPEForm = () => {
     address: {
       province: province,
       city: formData.city,
-      phoneNumber: userInfo ? userInfo.phoneNumber : '0700756217',
+      phoneNumber: formData.phoneNumber,
     },
   }
   // uploads image
@@ -189,12 +190,12 @@ const PPEForm = () => {
     } else {
       setFormData({ ...formData })
     }
-
+    console.log({...submittedForm})
     try {
       const { data } = await axios.post('/api/ppe', {
         ...submittedForm,
       })
-      // console.log(data)
+       console.log({...submittedForm})
       if (data) {
         setMessage('Your Ad has been posted')
       } else {
@@ -209,6 +210,9 @@ const PPEForm = () => {
   const onchange = (e) => {
     let target = e.target
     setFormData({ ...formData, [target.name]: target.value })
+  }
+  const saleprice$ = (e) => {
+    setSalePrice(e.target.value)
   }
   return (
     <div>
@@ -271,9 +275,8 @@ const PPEForm = () => {
           )}
         </div>
       </div>
-      <form onSubmit={onsubmit}>
-        {/* sub category */}
-        {message && <small className={s.postalert}>{message}</small>}
+      {/* sub category */}
+      {message && <small className={s.postalert}>{message}</small>}
         <DropdownSelect
           items={ppe.ppe}
           value={subcategory === '' ? 'Select Sub Category*' : subcategory}
@@ -286,23 +289,8 @@ const PPEForm = () => {
         ) : (
           ''
         )}
-        <TextField
-          className={s.textField}
-          label="Title*"
-          fieldname={'title'}
-          placeholderText={'Enter Advert Title'}
-          changefunction={onchange}
-          error={formError && formError.field_id === 'title' ? formError.message : ''}
-        />
-        <TextAreaField
-          placeholder={'Description*'}
-          label="Description*"
-          textareaName="description"
-          changefunction={onchange}
-          error={formError && formError.field_id === 'description' ? formError.message : ''}
-        />
-        {/* country, provinces, cities */}
-        <div className={s.addressgroup}>
+      {/* country, provinces, cities */}
+      <div className={s.addressgroup}>
           <div className={s.stretchright}>
             <p>Country</p>
             <DropdownSelect
@@ -329,16 +317,6 @@ const PPEForm = () => {
             ''
           )}
         </div>
-        <div className={s.citygroup}>
-          <TextField
-            className={s.textField}
-            label="City*"
-            fieldname={'city'}
-            placeholderText={`Enter Your City Here`}
-            changefunction={onchange}
-            error={formError && formError.field_id === 'city' ? formError.message : ''}
-          />
-        </div>
         <div className={s.pricing}>
           <p className={s.heading}>Price</p>
           <DropdownSelect
@@ -357,8 +335,8 @@ const PPEForm = () => {
               label="Price(R)*"
               fieldname={'saleprice'}
               placeholderText={'Enter Your Price'}
-              changefunction={onchange}
-              error={formError && formError.field_id === 'saleprice' ? formError.message : ''}
+              changefunction={saleprice$}
+
             />
           ) : (
             <>
@@ -367,6 +345,43 @@ const PPEForm = () => {
             </>
           )}
         </div>
+      <form onSubmit={onsubmit}>
+
+        <TextField
+          className={s.textField}
+          label="Title*"
+          fieldname={'title'}
+          placeholderText={'Enter Advert Title'}
+          changefunction={onchange}
+          error={formError && formError.field_id === 'title' ? formError.message : ''}
+        />
+        <TextAreaField
+          placeholder={'Description*'}
+          label="Description*"
+          textareaName="description"
+          changefunction={onchange}
+          error={formError && formError.field_id === 'description' ? formError.message : ''}
+        />
+          <TextField
+          className={s.textField}
+          label="Phone Number*"
+          fieldname={'phoneNumber'}
+          placeholderText={'Enter Phone Number To Reach You'}
+          changefunction={onchange}
+          error={formError && formError.field_id === 'phoneNumber' ? formError.message : ''}
+        />
+
+        <div className={s.citygroup}>
+          <TextField
+            className={s.textField}
+            label="City*"
+            fieldname={'city'}
+            placeholderText={`Enter Your City Here`}
+            changefunction={onchange}
+            error={formError && formError.field_id === 'city' ? formError.message : ''}
+          />
+        </div>
+
         <div className={s.step2Form}>
           <div className={s.monetization}>
             <div className={s.titleMonetization}>

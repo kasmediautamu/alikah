@@ -1,4 +1,16 @@
 {
+  "links":[
+    {"title":"Services","link":"/services"},
+    {"title":"Vehicles","link":"/vehicles"},
+    {"title":"Dating","link":"/dating"},
+    {"title":"Fashion","link":"/fashion"},
+    {"title":"Property","link":"/property"},
+    {"title":"Jobs","link":"/jobs"},
+    {"title":"Electronics & Furniture","link":"/electronics"},
+    {"title":"Education & Books","link":"/education"},
+    {"title":"Local Manufacturers","link":"/manufucturers"},
+    {"title":"PPE & Covid19 essentials","link":"/ppe"}
+  ],
   "categories":[
     "Services",
     "Vehicles",
@@ -9,6 +21,6 @@
     "Electronics & Furniture",
     "Education & Books",
     "Local Manufacturers",
-    "PPE & Covid19 essentials services"
+    "PPE & Covid19 essentials"
   ]
 }
