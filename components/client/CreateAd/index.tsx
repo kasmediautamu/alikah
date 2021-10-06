@@ -43,7 +43,7 @@ const CreateAd = () => {
         {form === 'Electronics & Furniture' && <><ElectronicsForm /></>}
         {form === 'Education & Books' && <><EducationForm /></>}
         {form === 'Local Manufacturers' && <><ManufucturersForm /></>}
-        {form === 'PPE & Covid19 essentials services' && <><PPEForm /></>}
+        {form === 'PPE & Covid19 essentials' && <><PPEForm /></>}
         {form === 'Property' && <><PropertyForm /></>}
       </div>
     </div>

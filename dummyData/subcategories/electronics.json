@@ -1,5 +1,5 @@
 {
-  "electronics":[
+  "electronics": [
     "Audio & Headphones",
     "Cameras & Accessories",
     "Computers, Software & Components",
@@ -20,11 +20,11 @@
     "Stationary ",
     "Other Items"
   ],
-  "forSaleBy":[
+  "forSaleBy": [
     "Owner",
     "Dealer"
   ],
-  "condition":[
+  "condition": [
     "New",
     "Used",
     "Refurbished",

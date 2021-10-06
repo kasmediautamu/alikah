@@ -1,13 +1,12 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
-import s from './PromotedAdSlider.module.scss'
+import s from './Slider.module.scss'
 
-const PromotedAdSlider = ({adverts}:any) => {
+const ManualSlider = ({adverts}:any) => {
   const settings = {
-    dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 1,
+    slidesToShow: 3,
     slidesToScroll: 3
   };
 
@@ -42,4 +41,4 @@ const PromotedAdSlider = ({adverts}:any) => {
   )
 }
 
-export default PromotedAdSlider
+export default ManualSlider

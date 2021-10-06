@@ -1,8 +1,10 @@
 import Link from 'next/link'
-import React from 'react'
+import React, { useState } from 'react'
 import Button from '../../FormFields/Button'
 import s from './ContactPanel.module.scss'
-const ContactPanel = () => {
+const ContactPanel = ({children}) => {
+  const[hideMsgField, showMsgField] = useState(true)
+  const [showUserContact,hideUserContact] = useState(false)
   return (
     <div className={s.contactpanel}>
       <div className={s.offerPanel}>
@@ -11,7 +13,7 @@ const ContactPanel = () => {
           {''}
           {'150000'} <span>{'Negotiable'}</span>
         </p>
-        <Button>Make an Offer</Button>
+        <Button onClick={()=>showMsgField(!hideMsgField)}>Make an Offer</Button>
       </div>
       <div className={s.profilePanel}>
         <div className={s.profile}>
@@ -28,8 +30,12 @@ const ContactPanel = () => {
             </div>
           </div>
         </div>
-        <Button>0700756217</Button>
-        <Button>start chat</Button>
+        <Button onClick={()=>hideUserContact(!showUserContact)}>{!showUserContact ? <>Show Contact</>: <>{'0700756217'}</>}</Button>
+        <Button onClick={()=>showMsgField(!hideMsgField)}>start chat</Button>
+        {!hideMsgField ? <><div className={s.msgfieldwrapper}>
+          {children}
+        </div></> :''
+        }
       </div>
       <div className={s.safetyTips}>
         <p>Safety Tips</p>

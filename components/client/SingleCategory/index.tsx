@@ -2,16 +2,13 @@ import React from 'react'
 import HorizontalAd from '../../client/singleAd/ad'
 import s from './SingleCategory.module.scss'
 import Link from 'next/link'
-import Slider from '../../client/Slider'
+import Slider from '../../Allslides/Slider'
 import adverts from '../../../dummyData/adverts.json'
 import LeftSideNav from './LeftSideNav'
 const SingleCategory = ({Adverts}:any) => {
 
   return (
     <>
-    <div className={s.title}>Sponsored Ads</div>
-    <div className={s.sliderWrapper}>
-    </div>
     <div className={s.singlecatPage}>
       <div className={s.left}>
       <LeftSideNav />

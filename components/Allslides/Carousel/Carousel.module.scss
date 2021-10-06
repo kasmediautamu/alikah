@@ -25,18 +25,18 @@ font-family: 'Inter-SemiBold';
 font-size: 13px;
 }
 .province {
-color:$blue-2;
-font-family: 'Inter-Light';
-font-size: 14px;
-line-height: 18px;
+  color:$brown-1;
+  font-family: 'Inter-SemiBold';
+  font-size: 10px;
+  text-transform: capitalize;
 text-align:left;
 padding-left: 10px;
 }
 .city {
-  color:$blue-2;
-  font-family: 'Inter-Light';
+  color:$brown-1;
+  font-family: 'Inter-SemiBold';
   font-size: 10px;
-  line-height: 18px;
+  text-transform: capitalize;
   text-align:left;
 }
 .priceTitle {

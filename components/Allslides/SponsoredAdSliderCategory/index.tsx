@@ -1,21 +1,25 @@
-import React, { Component } from "react";
-import Slider from "react-slick";
-import s from './Slider.module.scss'
-
-const ManualSlider = ({adverts}:any) => {
+import React from 'react'
+import NextLink from 'next/link'
+import Link from 'next/link'
+import Slider from 'react-slick'
+import s from './SponsoredAdSliderCategory.module.scss'
+const SponsoredCategorySlider = ({ sponsoredAds }: any) => {
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 3
-  };
-
+    slidesToShow: 5,
+    slidesToScroll: 1,
+    autoplay: true,
+    speed: 1000,
+    autoplaySpeed: 2000,
+    cssEase: 'linear'
+  }
   return (
-    <div className={s.container}>
-      <Slider {...settings}>
-      {adverts &&
-            adverts.map((ad) => {
+    <div>
+      <div className={s.container}>
+        <Slider {...settings}>
+          {sponsoredAds &&
+            sponsoredAds.map((ad) => {
               return (
                 <div key={ad._id} className={s.slide}>
                   <div className={s.adWrapper}>
@@ -37,9 +41,10 @@ const ManualSlider = ({adverts}:any) => {
                 </div>
               )
             })}
-      </Slider>
+
+        </Slider>
+      </div>
     </div>
   )
 }
-
-export default ManualSlider
+export default SponsoredCategorySlider

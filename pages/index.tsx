@@ -4,9 +4,9 @@ import Ad from '../components/client/Ad'
 import CategoryList from '../components/client/CategoryList'
 import TopCityList from '../components/client/TopCityList'
 import ClientLayout from '../components/client/Layout'
-import AutoSlider from '../components/client/Carousel'
-import ManualSlider from '../components/client/Slider'
-import PromotedAdSlider from '../components/client/PromotedAdSlder'
+import AutoSlider from '../components/Allslides/Carousel'
+import ManualSlider from '../components/Allslides/Slider'
+import PromotedAdSlider from '../components/Allslides/PromotedAdSlder'
 import s from './Home.module.scss'
 import adverts from '../dummyData/adverts.json'
 import fetchDating from '../lib/fetcher/dating'
@@ -19,7 +19,20 @@ import fetchPPE from '../lib/fetcher/ppe'
 import fetchProperty from '../lib/fetcher/property'
 import fetchElectronics from '../lib/fetcher/electronics'
 import fetchServices from '../lib/fetcher/services'
+import SubCategories from '../components/client/SubCategories'
 
+// local data
+import dating from '../dummyData/subcategories/dating.json'
+import education from '../dummyData/subcategories/education.json'
+import electronics from '../dummyData/subcategories/electronics.json'
+import fashion from '../dummyData/subcategories/fashion.json'
+import job from '../dummyData/subcategories/job.json'
+import manufucturers from '../dummyData/subcategories/manufucturers.json'
+import ppe from '../dummyData/subcategories/ppe.json'
+import property from '../dummyData/subcategories/property.json'
+import services from '../dummyData/subcategories/services.json'
+import vehicles from '../dummyData/subcategories/vehicles.json'
+// data fetching from api
 export async function getServerSideProps() {
   const datingAds = await fetchDating()
   const educationAds = await fetchEducation()
@@ -113,7 +126,20 @@ export default function Home({
           <div className={s.givenDate}>
           <ManualSlider adverts={datingAds.data} />
           </div>
-          {/* car deals */}
+          {/* sub categories*/}
+          <p className={s.datePosted}>All Sub Categories</p>
+          <div className={s.subcategories}>
+            <SubCategories category={`Dating`} dataList={dating.dating} to={`/dating`}/>
+            <SubCategories category={`Education`} dataList={education.Education} to={`/education`}/>
+            <SubCategories category={`Fashion`} dataList={fashion.fashion} to={`/fashion`}/>
+            <SubCategories category={`Local Manufucturers`} dataList={manufucturers.localManufacturers} to={`/manufucturers`}/>
+            <SubCategories category={`PPE & Covid Serivces`} dataList={ppe.ppe} to={`/ppe`}/>
+            <SubCategories category={`Property`} dataList={property.property} to={`/property`}/>
+            <SubCategories category={`Vehicles`} dataList={vehicles.vehicles} to={`/vehicles`}/>
+            <SubCategories category={`Electronics & Accessories`} dataList={electronics.electronics} to={`/electronics`} />
+            <SubCategories category={`Jobs`} dataList={job.jobs} to={`/jobs`}/>
+            <SubCategories category={`Services`} dataList={services.services} to={`/services`}/>
+          </div>
         </div>
         <div className={s.rightSidebar}>
           <div className={s.happening}>
@@ -123,13 +149,14 @@ export default function Home({
               our dating feature.
             </p>
           </div>
+          <div className={s.latestAd}>
+            <p className={s.latestTitle}>Promoted Ads</p>
+            <PromotedAdSlider adverts={datingAds.data} />
+          </div>
           <div className={s.alikahPermanentAd}>
             <img src="./images/alikah-brand-ad.png" alt="alikah-brand advert" />
           </div>
-          <div className={s.latestAd}>
-            <p className={s.latestTitle}>Checkout the Latest Ads</p>
-            <PromotedAdSlider sponsoredAds={datingAds.data} />
-          </div>
+
         </div>
       </main>
     </div>
@@ -140,3 +167,7 @@ export default function Home({
 Home.getLayout = (page) => {
   return <ClientLayout>{page}</ClientLayout>
 }
+/**
+ * https://stackoverflow.com/questions/60060544/page-refresh-break-styles-on-nextjs-production-app
+ * https://stackoverflow.com/questions/66587775/preloading-a-css-file-with-nextjs
+ */

@@ -1,0 +1,33 @@
+@import '../styles/scss/variables.scss';
+.pagewrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.advertswrapper {
+  width:100%;
+  padding-top: 20px;
+}
+.pagetitle {
+  padding-left: 25px;
+  p {
+    text-align:left;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: $blue-5;
+    font-family: 'Inter-Medium';
+    font-size: 13px;
+    span {
+      color:$brown-1;
+      font-family: 'Inter-Black';
+    }
+  }
+}
+.slidetitle {
+    text-align:left;
+    color: $blue-5;
+    font-family: 'Inter-Light';
+    font-size: 18px;
+    line-height: 20px;
+}

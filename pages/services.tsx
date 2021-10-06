@@ -3,6 +3,7 @@ import ClientLayout from '../components/client/Layout'
 import SingleCategory from '../components/client/SingleCategory'
 import axios from 'axios'
 import fetchServices from '../lib/fetcher/services'
+import SponsoredCategorySlider from '../components/Allslides/SponsoredAdSliderCategory'
 
 export async function getStaticProps() {
   const serviceAds = await fetchServices()
@@ -15,6 +16,7 @@ const ServicePage = ({serviceAds}) => {
 
   return (
     <>
+    <SponsoredCategorySlider sponsoredAds={[]} />
       {serviceAds === null || serviceAds === undefined ? (
         <>loading</>
       ) : (

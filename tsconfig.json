@@ -25,7 +25,7 @@
     "**/*.tsx",
     "pages/**/*",
     "src/**/*"
-, "utils/auth.js", "components/client/CreateAd/Step1/index.js", "components/client/Carousel/BannerExample/index.jsx", "components/client/Login/GoogleAuth/index.tsx"  ],
+, "utils/auth.js", "components/client/CreateAd/Step1/index.js", "components/Allslides/Carousel/BannerExample/index.jsx", "components/client/Login/GoogleAuth/index.tsx"  ],
   "exclude": [
     "node_modules"
   ],
