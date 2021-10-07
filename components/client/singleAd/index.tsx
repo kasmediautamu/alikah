@@ -7,24 +7,45 @@ import ImageSlider from './ImageSlider'
 import SocialBar from './socialShareLinks'
 import adverts from '../../../dummyData/adverts.json'
 import s from './SingleAd.module.scss'
-import Link from 'next/link'
 import ContactPanel from './ContactPanel'
 import MessageForm from './MessageForm'
 
-const initialFormState = {
-  message:''
-}
+import { useSelector,TypedUseSelectorHook } from 'react-redux'
+import type { RootState} from '../../../redux/store'
+import axios from 'axios'
+import { useRouter } from 'next/router'
+
+const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
+
 const SingleAd = () => {
+  const router = useRouter()
+  const { redirect }: any = router.query
+  const { title,price,_id,userId }  = useAppSelector((state: any) => state.singleadvert.singleadvert)
   const [message,setMessage] = React.useState<string>('')
   const submittedForm = {
-    message:message
+    senderId:'logged in user',//change after get userinfo
+    receipientId:userId,
+    message:{
+      subject:title,
+      body:message
+    }
   }
   const onchange = (e) => {
     setMessage(e.target.value)
   }
-  const onclick =() => {
-    console.log(submittedForm)
+  const onclick = async() => {
     //call api here
+    try {
+      const { data } = await axios.post('/api/messages', {
+        ...submittedForm
+      })
+      if (data) {
+        console.log(data)
+      }
+      router.push(redirect || '/account')
+    } catch (err) {
+      console.log(err)
+    }
   }
   const Adverts = adverts.map((advert) => {
     return advert
@@ -62,3 +83,9 @@ const SingleAd = () => {
 export default SingleAd
 
 
+/**
+ * https://www.npmjs.com/package/reduxjs-toolkit-persist
+ * https://www.npmjs.com/package/redux-persist
+ * https://stackoverflow.com/questions/62881669/redux-state-will-become-to-the-initial-state-after-page-reload-next-js
+ *https://medium.com/camperstribe/react-social-media-integration-with-react-share-and-react-helmet-84d9def6a445
+ */

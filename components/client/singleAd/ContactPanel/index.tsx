@@ -2,16 +2,22 @@ import Link from 'next/link'
 import React, { useState } from 'react'
 import Button from '../../FormFields/Button'
 import s from './ContactPanel.module.scss'
+import { useSelector,TypedUseSelectorHook } from 'react-redux'
+import type { RootState} from '../../../../redux/store'
+
+const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
 const ContactPanel = ({children}) => {
+  const { title,price,_id }  = useAppSelector((state: any) => state.singleadvert.singleadvert)
   const[hideMsgField, showMsgField] = useState(true)
   const [showUserContact,hideUserContact] = useState(false)
+
   return (
     <div className={s.contactpanel}>
       <div className={s.offerPanel}>
         <p>
           {'R'}
           {''}
-          {'150000'} <span>{'Negotiable'}</span>
+          {price}
         </p>
         <Button onClick={()=>showMsgField(!hideMsgField)}>Make an Offer</Button>
       </div>
@@ -52,7 +58,7 @@ const ContactPanel = ({children}) => {
           Double check agent's background.
         </p>
       </div>
-      <Link href={`/create-ad`}>
+      <Link href={`/create-free-ad`}>
         <Button>Post Ad like this</Button>
       </Link>
     </div>

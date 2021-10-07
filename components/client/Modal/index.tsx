@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { Modal } from "react-bootstrap";
 import _close from "./assets/close.svg";
-import "./styles.scss";
+import s from './Modal.module.scss'
 
 type IBaseModal = {
   handleClose: any;
@@ -34,18 +34,9 @@ const BaseModal = (props: IBaseModal) => {
       >
         <Modal.Header>
           <Modal.Title>{modalTitle}</Modal.Title>
-          <img src={_close} alt="" onClick={handleClose} />
+          <img src={'./icons/close.svg'} alt="modal close icon" onClick={handleClose} />
         </Modal.Header>
         <Modal.Body>{children}</Modal.Body>
-        {/* <Modal.Footer>
-          <a
-            href="javascript:void(0)"
-            className={anchorClass}
-            onClick={handleClose}
-          >
-            {btnlabel}
-          </a>
-        </Modal.Footer> */}
       </Modal>
     </>
   );

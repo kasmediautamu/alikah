@@ -32,6 +32,10 @@ import ppe from '../dummyData/subcategories/ppe.json'
 import property from '../dummyData/subcategories/property.json'
 import services from '../dummyData/subcategories/services.json'
 import vehicles from '../dummyData/subcategories/vehicles.json'
+import { useEffect } from 'react'
+import { useSelector, useDispatch, TypedUseSelectorHook } from 'react-redux'
+import type { RootState, AppDispatch } from '../redux/store'
+import { setAdverts } from '../redux/Actions/Adverts'
 // data fetching from api
 export async function getServerSideProps() {
   const datingAds = await fetchDating()
@@ -61,7 +65,7 @@ export async function getServerSideProps() {
     },
   }
 }
-
+const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
 export default function Home({
   datingAds,
   educationAds,
@@ -74,8 +78,7 @@ export default function Home({
   electronicsAds,
   servicesAds,
 }) {
-  // console.log(servicesAds)
-  // console.log(datingAds.data)
+  const dispatch = useDispatch()
   const spreadAll = [
     ...servicesAds.data,
     ...datingAds.data,
@@ -88,11 +91,11 @@ export default function Home({
     ...educationAds.data,
     ...manufuctureAds.data
   ]
-  console.log(vehicleAds)
-  const sliderAdverts = adverts.map((advert) => {
-    return advert
-  })
 
+  console.log(vehicleAds)
+useEffect(()=>{
+  dispatch(setAdverts(spreadAll))
+},[])
   return (
     <div className="container-fluid">
       <Head>

@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux'
 import { AuthSigninReducer, AuthSignoutReducer, setNavReducer } from './auth'
+import {AllAdvertsReducer, SingleAdvertReducer} from './Adverts'
 
 
 
@@ -7,7 +8,9 @@ import { AuthSigninReducer, AuthSignoutReducer, setNavReducer } from './auth'
 const reducers = {
   sign_in: AuthSigninReducer,
   sign_out: AuthSignoutReducer,
-  set_nav: setNavReducer
+  set_nav: setNavReducer,
+  alladverts:AllAdvertsReducer,
+  singleadvert:SingleAdvertReducer
 }
 
 export default combineReducers(reducers)
